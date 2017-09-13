@@ -50,18 +50,19 @@
 					<th v-text="line.product.category.name"></th>
 					<td>
 						<input type="number" class="form-control" step="0.10" v-model="line.price_per_unit"
-							:name="'products[' + index + '][price_per_unit]'">
-						<input type="hidden" :name="'products[' + index + '][product_id]'" v-model="line.product.id">
-						<input type="hidden" :name="'products[' + index + '][sold_quantity]'" v-model="line.sold_quantity">
+							:name="'products[' + line.product.id + '][price_per_unit]'"
+							min="0">
+						<input type="hidden" :name="'products[' + line.product.id + '][product_id]'" v-model="line.product.id">
+						<input type="hidden" :name="'products[' + line.product.id + '][sold_quantity]'" v-model="line.sold_quantity">
 					</td>
 					<td>
 						<input type="number" class="form-control" v-model="line.quantity"
-							:name="'products[' + index + '][quantity]'"
-							:min="line.sold_quantity">
+							:name="'products[' + line.product.id + '][quantity]'"
+							:min="line.sold_quantity || 0">
 					</td>
 					<td>
 						<input type="text" readonly class="form-control" v-model="computeProductLineTotalAmount(line)"
-							:name="'products[' + index + '][total_amount]'">
+							:name="'products[' + line.product.id + '][total_amount]'">
 					</td>
 					<td>
 						<button type="button" class="btn btn-sm btn-danger"
@@ -138,7 +139,7 @@
 		      		</div>
 		      		<div class="form-group">
 		      			<label for="quantity">Amount</label>
-		      			<input v-model="newProductTotalAmount" disabled type="number" class="form-control" id="total_amount">
+		      			<input v-model="new_product.total_amount" disabled type="number" class="form-control" id="total_amount">
 		      		</div>
 	    		</div>
 	    		<div class="modal-footer">
@@ -172,8 +173,7 @@
 				quantity: '',
 				total_amount: '',
 			},
-			paid_amount: '',
-			inventory: {!! isset($inventory) ? $inventory : '{}' !!}
+			inventory: {!! isset($inventory) ? $inventory : '{paid_amount : "", due_amount: 0, total_amount: 0}' !!}
 		},
 		computed: {
 			newProductTotalAmount () {
@@ -202,6 +202,12 @@
 					this.inventory.due_amount = (this.inventory.total_amount - this.inventory.paid_amount).toFixed(2)
 				},
 				deep: true,
+			},
+			new_product: {
+				handler: function (val, oldVal) {
+					this.new_product.total_amount = val.price_per_unit * val.quantity
+				},
+				deep: true
 			}
 		},
 		created () {
@@ -238,7 +244,7 @@
 					product: this.new_product.product,
 					price_per_unit: this.new_product.price_per_unit,
 					quantity: this.new_product.price_per_unit,
-					total_amount: this.newProductTotalAmount
+					total_amount: this.new_product.total_amount
 				})
 				$("#product-list-modal").modal('toggle')
 			},
