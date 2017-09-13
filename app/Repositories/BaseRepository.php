@@ -20,7 +20,7 @@ abstract class BaseRepository extends \InfyOm\Generator\Common\BaseRepository
 	                    if (array_search('', $new_values) !== false) {
 	                        unset($new_values[array_search('', $new_values)]);
 	                    }
-	                    $model->$key()->sync(($new_values));
+	                    $model->$key()->sync($new_values);
 	                    break;
 	                case 'Illuminate\Database\Eloquent\Relations\BelongsTo':
 	                    $model_key = $model->$key()->getQualifiedForeignKey();
@@ -62,7 +62,7 @@ abstract class BaseRepository extends \InfyOm\Generator\Common\BaseRepository
 	                    if (array_search('', $new_values) !== false) {
 	                        unset($new_values[array_search('', $new_values)]);
 	                    }
-	                    $model->$key()->sync(array_values($new_values));
+	                    $model->$key()->sync($new_values);
 	                    break;
 	            }
 	        }

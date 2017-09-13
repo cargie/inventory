@@ -19,7 +19,7 @@ class ProductDataTable extends DataTable
         $dataTable = new EloquentDataTable($query);
         $dataTable->addColumn('action', 'products.datatables_actions');
         $dataTable->addColumn('category', function ($model) {
-            return $model->category->name;
+            return optional($model->category)->name;
         });$dataTable->addColumn('quantity', function ($model) {
             return $model->inventories->sum('pivot.quantity');
         });
