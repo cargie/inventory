@@ -74,6 +74,7 @@ class ProductDataTable extends DataTable
             'code',
             'name' => ['name' => 'name', 'data' => 'name'],
             'category' => ['name' => 'category.name', 'data' => 'category'],
+            'cost_price',
             'selling_price',
             'available_quantity' => ['title' => 'Available Qty.'],
         ];

@@ -17,10 +17,10 @@
 </div>
 
 <!-- Cost Price Field -->
-{{-- <div class="form-group col-sm-6">
+<div class="form-group col-sm-6">
     {!! Form::label('cost_price', 'Cost Price:') !!}
     {!! Form::number('cost_price', null, ['class' => 'form-control']) !!}
-</div> --}}
+</div>
 
 <!-- Selling Price Field -->
 <div class="form-group col-sm-6">

@@ -73,7 +73,7 @@ class Product extends Model
         'category' => 'exists:categories,id|required',
         'description' => 'string|nullable',
         'code' => 'required|unique:products,code',
-        // 'cost_price' => 'numeric|required|min:0',
+        'cost_price' => 'numeric|required|min:0',
         'selling_price' => 'required|numeric|min:0',
         'reorder_point' => 'numeric|required|min:0',
         'opening_stock' => 'numeric|required|min:1',

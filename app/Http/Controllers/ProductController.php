@@ -127,7 +127,7 @@ class ProductController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateProductRequest $request)
     {
         $product = $this->productRepository->findWithoutFail($id);
 
