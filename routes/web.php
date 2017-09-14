@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index');
-
 Route::group(['middleware' => ['auth']], function () {
     
 
@@ -35,15 +33,13 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('inventories', 'InventoryController');
 
 	Route::resource('categories', 'CategoryController');
+
+	Route::resource('orders', 'OrderController');
+
+	Route::resource('payments', 'PaymentController');
+
+	Route::get('/dashboard', 'HomeController@index');
 });
-
-Route::resource('inventoryProducts', 'InventoryProductController');
-
-Route::resource('orders', 'OrderController');
-
-Route::resource('payments', 'PaymentController');
-
-Route::resource('orderProducts', 'OrderProductController');
 
 
 
