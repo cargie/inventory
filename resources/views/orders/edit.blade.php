@@ -11,11 +11,13 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($order, ['route' => ['orders.update', $order->id], 'method' => 'patch']) !!}
+                    @yield('form.open')
+                    {!! Form::model($order, ['route' => ['orders.update', $order->id], 'method' => 'patch']) !!}
 
                         @include('orders.fields')
 
-                   {!! Form::close() !!}
+                    {!! Form::close() !!}
+                    @yield('form.close')
                </div>
            </div>
        </div>

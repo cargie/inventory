@@ -12,11 +12,13 @@
 
             <div class="box-body">
                 <div class="row">
+                    @yield('form.open')
                     {!! Form::open(['route' => 'orders.store']) !!}
 
                         @include('orders.fields')
 
                     {!! Form::close() !!}
+                    @yield('form.close')
                 </div>
             </div>
         </div>
