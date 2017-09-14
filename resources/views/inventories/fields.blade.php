@@ -255,7 +255,7 @@
 				return line.total_amount = (line.price_per_unit * line.quantity).toFixed(2) || null
 			},
             selectedOption (selectedOption, id) {
-                this.new_product.price_per_unit = selectedOption.selling_price
+                this.new_product.price_per_unit = selectedOption.cost_price
             }
 		}
 	})
