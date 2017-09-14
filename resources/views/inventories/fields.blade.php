@@ -205,6 +205,7 @@
 			},
 			new_product: {
 				handler: function (val, oldVal) {
+					this.new_product.price_per_unit = val.product.cost_price
 					this.new_product.total_amount = val.price_per_unit * val.quantity
 				},
 				deep: true
