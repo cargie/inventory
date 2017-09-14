@@ -243,7 +243,7 @@
 				this.product_line.push({
 					product: this.new_product.product,
 					price_per_unit: this.new_product.price_per_unit,
-					quantity: this.new_product.price_per_unit,
+					quantity: this.new_product.quantity,
 					total_amount: this.new_product.total_amount
 				})
 				$("#product-list-modal").modal('toggle')
