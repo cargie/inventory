@@ -127,7 +127,7 @@
 		      					:key="product.name"></option>
 		      			</select>
 		      			 --}}
-		      			 <multiselect :options="getUnselectedProducts" label="name" v-model="new_product.product"></multiselect>
+		      			 <multiselect @select="selectedOption" :options="getUnselectedProducts" label="name" v-model="new_product.product"></multiselect>
 		      		</div>
 		      		<div class="form-group">
 		      			<label for="price_per_unit">Price Per Unit</label>
@@ -205,7 +205,6 @@
 			},
 			new_product: {
 				handler: function (val, oldVal) {
-					this.new_product.price_per_unit = val.product.cost_price
 					this.new_product.total_amount = val.price_per_unit * val.quantity
 				},
 				deep: true
@@ -254,7 +253,10 @@
 			},
 			computeProductLineTotalAmount(line) {
 				return line.total_amount = (line.price_per_unit * line.quantity).toFixed(2) || null
-			}
+			},
+            selectedOption (selectedOption, id) {
+                this.new_product.price_per_unit = selectedOption.selling_price
+            }
 		}
 	})
 </script>
