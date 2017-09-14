@@ -29,7 +29,8 @@ class Payment extends Model
         'order_id',
         'paid_at',
         'amount',
-        'mode'
+        'mode',
+        'note',
     ];
 
     /**
@@ -51,7 +52,8 @@ class Payment extends Model
         'order_id' => 'required|exists:orders,id',
         'paid_at' => 'date|required',
         'amount' => 'required|numeric|min:0',
-        'mode' => 'required|in:cash,cheque,credit'
+        'mode' => 'required|in:cash,cheque,credit,debit',
+        'note' => 'nullable'
     ];
 
     
