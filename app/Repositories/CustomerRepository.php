@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Customer;
-use InfyOm\Generator\Common\BaseRepository;
 
 /**
  * Class CustomerRepository

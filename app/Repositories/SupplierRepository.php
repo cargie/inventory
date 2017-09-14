@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Supplier;
-use InfyOm\Generator\Common\BaseRepository;
 
 /**
  * Class SupplierRepository

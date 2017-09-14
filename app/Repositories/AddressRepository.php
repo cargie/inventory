@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Address;
-use InfyOm\Generator\Common\BaseRepository;
 
 /**
  * Class AddressRepository

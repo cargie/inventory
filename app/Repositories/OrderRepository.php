@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Order;
-use InfyOm\Generator\Common\BaseRepository;
 
 /**
  * Class OrderRepository

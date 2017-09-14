@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Payment;
-use InfyOm\Generator\Common\BaseRepository;
 
 /**
  * Class PaymentRepository

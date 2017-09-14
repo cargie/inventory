@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\InventoryProduct;
-use InfyOm\Generator\Common\BaseRepository;
 
 /**
  * Class InventoryProductRepository

@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Tag;
-use InfyOm\Generator\Common\BaseRepository;
 
 /**
  * Class TagRepository
