@@ -109,7 +109,7 @@
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('inventories.index') !!}" class="btn btn-default">Cancel</a>
 </div>
-@section('form.end')
+@section('form.close')
 <div class="modal fade" tabindex="-1" role="dialog" id="product-list-modal">
   	<form v-on:submit.prevent="addProductLine()">
   		<div class="modal-dialog" role="document">

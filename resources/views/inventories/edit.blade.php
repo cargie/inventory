@@ -17,7 +17,7 @@
                         @include('inventories.fields')
 
                    {!! Form::close() !!}
-                   @yield('form.end')
+                   @yield('form.close')
                </div>
            </div>
        </div>
