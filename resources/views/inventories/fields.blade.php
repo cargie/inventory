@@ -135,7 +135,7 @@
 		      		</div>
 		      		<div class="form-group">
 		      			<label for="quantity">Quantity</label>
-		      			<input v-model="new_product.quantity" required type="number" class="form-control" id="quantity">
+		      			<input v-model="new_product.quantity" min="1" required type="number" class="form-control" id="quantity">
 		      		</div>
 		      		<div class="form-group">
 		      			<label for="quantity">Amount</label>
