@@ -69,7 +69,7 @@ class OrderDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['visible' => false],
+            'uid' => ['title' => 'ID'],
             'customer' => ['data' => 'customer'],
             'mode',
             'total_amount',

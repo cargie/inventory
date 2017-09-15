@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 use Iatstuti\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Order extends Model
 {
-    use SoftDeletes, CascadeSoftDeletes;
+    use SoftDeletes, CascadeSoftDeletes, Sluggable;
 
     public $table = 'orders';
     
@@ -59,6 +60,21 @@ class Order extends Model
         'paid_amount' => 'numeric|nullable',
         'products' => 'required|array'
     ];
+
+    public function sluggable()
+    {
+        return [
+            'uid' => [
+                'source' => 'id',
+                'unique' => true,
+                'separator' => '-',
+                'onUpdate' => true,
+                'method' => function ($string, $separator) {
+                    return 'OR' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
+                }
+            ],
+        ];
+    }
 
     public function products()
     {

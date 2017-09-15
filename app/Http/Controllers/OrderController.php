@@ -80,7 +80,7 @@ class OrderController extends AppBaseController
      */
     public function show($id)
     {
-        $order = $this->orderRepository->findWithoutFail($id);
+        $order = $this->orderRepository->findByUid($id);
 
         if (empty($order)) {
             Flash::error('Order not found');
@@ -100,7 +100,7 @@ class OrderController extends AppBaseController
      */
     public function edit($id)
     {
-        $order = $this->orderRepository->with(['products.category'])->findWithoutFail($id);
+        $order = $this->orderRepository->with(['products.category'])->findByUid($id);
 
         if (empty($order)) {
             Flash::error('Order not found');
@@ -123,7 +123,7 @@ class OrderController extends AppBaseController
      */
     public function update($id, UpdateOrderRequest $request)
     {
-        $order = $this->orderRepository->findWithoutFail($id);
+        $order = $this->orderRepository->findByUid($id);
 
         if (empty($order)) {
             Flash::error('Order not found');
@@ -147,7 +147,7 @@ class OrderController extends AppBaseController
      */
     public function destroy($id)
     {
-        $order = $this->orderRepository->findWithoutFail($id);
+        $order = $this->orderRepository->findByUid($id);
 
         if (empty($order)) {
             Flash::error('Order not found');
@@ -155,7 +155,7 @@ class OrderController extends AppBaseController
             return redirect(route('orders.index'));
         }
 
-        $this->orderRepository->delete($id);
+        $this->orderRepository->deleteByUid($id);
 
         Flash::success('Order deleted successfully.');
 
