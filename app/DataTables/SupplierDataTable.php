@@ -74,7 +74,7 @@ class SupplierDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['visible' => false],
+            'uid' => ['title' => 'ID'],
             'name',
             'email',
             'phone',

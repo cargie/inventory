@@ -75,7 +75,7 @@ class SupplierController extends AppBaseController
      */
     public function show($id)
     {
-        $supplier = $this->supplierRepository->findWithoutFail($id);
+        $supplier = $this->supplierRepository->findByUid($id);
 
         if (empty($supplier)) {
             Flash::error('Supplier not found');
@@ -95,7 +95,7 @@ class SupplierController extends AppBaseController
      */
     public function edit($id)
     {
-        $supplier = $this->supplierRepository->findWithoutFail($id);
+        $supplier = $this->supplierRepository->findByUid($id);
 
         if (empty($supplier)) {
             Flash::error('Supplier not found');
@@ -116,7 +116,7 @@ class SupplierController extends AppBaseController
      */
     public function update($id, UpdateSupplierRequest $request)
     {
-        $supplier = $this->supplierRepository->findWithoutFail($id);
+        $supplier = $this->supplierRepository->findByUid($id);
 
         if (empty($supplier)) {
             Flash::error('Supplier not found');
@@ -140,7 +140,7 @@ class SupplierController extends AppBaseController
      */
     public function destroy($id)
     {
-        $supplier = $this->supplierRepository->findWithoutFail($id);
+        $supplier = $this->supplierRepository->findByUid($id);
 
         if (empty($supplier)) {
             Flash::error('Supplier not found');
@@ -148,7 +148,7 @@ class SupplierController extends AppBaseController
             return redirect(route('suppliers.index'));
         }
 
-        $this->supplierRepository->delete($id);
+        $this->supplierRepository->deleteByUid($id);
 
         Flash::success('Supplier deleted successfully.');
 

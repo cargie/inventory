@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Supplier extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Sluggable;
 
     public $table = 'suppliers';
 
@@ -64,5 +65,20 @@ class Supplier extends Model
     public function products()
     {
         return $this->hasManyThrough(InventoryProduct::class, Inventory::class);
+    }
+
+    public function sluggable()
+    {
+        return [
+            'uid' => [
+                'source' => 'id',
+                'unique' => true,
+                'separator' => '-',
+                'onUpdate' => true,
+                'method' => function ($string, $separator) {
+                    return 'SU' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
+                }
+            ],
+        ];
     }
 }
