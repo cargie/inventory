@@ -55,7 +55,7 @@
                     <tr v-for="(line,index) in product_line">
                         <th v-text="line.product.name">
                         </th>
-                        <th v-text="line.product.category.name"></th>
+                        <th v-text="line.product.category ? line.product.category.name : ''"></th>
                         <td>
                             <input type="number" class="form-control" step="0.10" v-model="line.price_per_unit"
                                 :name="'products[' + line.product.id + '][price]'"
