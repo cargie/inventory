@@ -56,5 +56,8 @@ class Payment extends Model
         'note' => 'nullable'
     ];
 
-    
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
