@@ -97,7 +97,7 @@ class Product extends Model
                 'separator' => '-',
                 'onUpdate' => true,
                 'method' => function ($string, $separator) {
-                    return 'P' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
+                    return 'PR' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
                 }
             ],
         ];
