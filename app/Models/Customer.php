@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Customer extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Sluggable;
 
     public $table = 'customers';
 
@@ -52,6 +53,21 @@ class Customer extends Model
         'last_name' => 'required',
         'email' => 'email',
     ];
+
+    public function sluggable()
+    {
+        return [
+            'uid' => [
+                'source' => 'id',
+                'unique' => true,
+                'separator' => '-',
+                'onUpdate' => true,
+                'method' => function ($string, $separator) {
+                    return 'C' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
+                }
+            ],
+        ];
+    }
 
     public function addresses()
     {

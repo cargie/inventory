@@ -68,7 +68,7 @@ class CustomerDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['visible' => false],
+            'uid' => ['title' => 'ID'],
             'name' => ['name' => 'first_name'],
             'last_name' => ['visible' => false],
             'first_name' => ['visible' => false],

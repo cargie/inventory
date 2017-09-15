@@ -76,7 +76,7 @@ class CustomerController extends AppBaseController
      */
     public function show($id)
     {
-        $customer = $this->customerRepository->findWithoutFail($id);
+        $customer = $this->customerRepository->findByUid($id);
 
         if (empty($customer)) {
             Flash::error('Customer not found');
@@ -96,7 +96,7 @@ class CustomerController extends AppBaseController
      */
     public function edit($id)
     {
-        $customer = $this->customerRepository->findWithoutFail($id);
+        $customer = $this->customerRepository->findByUid($id);
 
         if (empty($customer)) {
             Flash::error('Customer not found');
@@ -117,7 +117,7 @@ class CustomerController extends AppBaseController
      */
     public function update($id, UpdateCustomerRequest $request)
     {
-        $customer = $this->customerRepository->findWithoutFail($id);
+        $customer = $this->customerRepository->findByUid($id);
 
         if (empty($customer)) {
             Flash::error('Customer not found');
@@ -141,7 +141,7 @@ class CustomerController extends AppBaseController
      */
     public function destroy($id)
     {
-        $customer = $this->customerRepository->findWithoutFail($id);
+        $customer = $this->customerRepository->findByUid($id);
 
         if (empty($customer)) {
             Flash::error('Customer not found');
@@ -149,7 +149,7 @@ class CustomerController extends AppBaseController
             return redirect(route('customers.index'));
         }
 
-        $this->customerRepository->delete($id);
+        $this->customerRepository->deleteByUid($id);
 
         Flash::success('Customer deleted successfully.');
 
