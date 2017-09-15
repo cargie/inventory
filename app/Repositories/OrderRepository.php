@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Order;
+use Carbon\Carbon;
 
 /**
  * Class OrderRepository
@@ -31,5 +32,38 @@ class OrderRepository extends BaseRepository
     public function model()
     {
         return Order::class;
+    }
+
+    public function create(array $attributes)
+    {
+        $model = parent::create($attributes);
+
+        if (isset($attributes['paid_amount']) && $attributes['paid_amount'] > 0) {
+            if ($attributes['paid_amount'] >= $attributes['total_amount']) {
+                $payment = $model->payments()->create([
+                    'paid_at' => Carbon::now(),
+                    'amount' => $attributes['paid_amount'],
+                    'mode' => $attributes['payment_mode'],
+                    'note' => $attributes['payment_note'],
+                ]);
+            } else {
+                $payment = $model->payments()->create([
+                    'paid_at' => Carbon::now(),
+                    'amount' => $attributes['paid_amount'],
+                    'mode' => $attributes['payment_mode'],
+                    'note' => $attributes['payment_note'],
+                ]);
+            }
+
+            $order = $model;
+            $order->paid_amount = $attributes['paid_amount'];
+            $order->save();
+        }
+
+        $model->products->map(function ($p) {
+            $p->decrement('available_quantity', $p->pivot->quantity);
+        });
+
+        return $model;
     }
 }

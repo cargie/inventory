@@ -74,7 +74,6 @@ class OrderDataTable extends DataTable
             'mode',
             'total_amount',
             'paid_amount',
-            'due_amount' => ['title' => 'Due'],
         ];
     }
 

@@ -100,7 +100,7 @@ class OrderController extends AppBaseController
      */
     public function edit($id)
     {
-        $order = $this->orderRepository->findWithoutFail($id);
+        $order = $this->orderRepository->with(['products.category'])->findWithoutFail($id);
 
         if (empty($order)) {
             Flash::error('Order not found');

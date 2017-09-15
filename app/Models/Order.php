@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -17,20 +18,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Order extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, CascadeSoftDeletes;
 
     public $table = 'orders';
     
 
     protected $dates = ['deleted_at'];
 
+    protected $cascadeDeletes = ['payments'];
 
     public $fillable = [
         'customer_id',
         'ordered_at',
         'total_amount',
-        'paid_amount'
+        'mode',
     ];
+
+    protected $appends = ['due_amount'];
 
     /**
      * The attributes that should be casted to native types.
@@ -38,7 +42,9 @@ class Order extends Model
      * @var array
      */
     protected $casts = [
-        'customer_id' => 'integer'
+        'customer_id' => 'integer',
+        'total_amount' => 'double',
+        'paid_amount' => 'double',
     ];
 
     /**
@@ -47,19 +53,36 @@ class Order extends Model
      * @var array
      */
     public static $rules = [
-        'customer_id' => 'required|exists:customers,id',
+        'customer' => 'required|exists:customers,id',
         'ordered_at' => 'date|required',
         'total_amount' => 'required|numeric|min:0',
-        'paid_amount' => 'due_amount decimal,10,2:nullable number'
+        'paid_amount' => 'numeric|nullable',
+        'products' => 'required|array'
     ];
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'order_products');
+        return $this->belongsToMany(Product::class, 'order_products')
+            ->withPivot(['quantity', 'price', 'amount', 'discount', 'vat']);
     }
 
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+    
+    public function getDueAmountAttribute()
+    {
+        return number_format($this->total_amount - $this->paid_amount, 2 , '.' , '');
+    }
+
+    public function getPaidAmountAttribute($value)
+    {
+        return number_format($value, 2, '.', '');
     }
 }
