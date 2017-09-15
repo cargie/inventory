@@ -87,7 +87,7 @@ class ProductController extends AppBaseController
      */
     public function show($id)
     {
-        $product = $this->productRepository->findWithoutFail($id);
+        $product = $this->productRepository->findByUid($id);
 
         if (empty($product)) {
             Flash::error('Product not found');
@@ -107,7 +107,7 @@ class ProductController extends AppBaseController
      */
     public function edit($id)
     {
-        $product = $this->productRepository->findWithoutFail($id);
+        $product = $this->productRepository->findByUid($id);
 
         if (empty($product)) {
             Flash::error('Product not found');
@@ -129,7 +129,7 @@ class ProductController extends AppBaseController
      */
     public function update($id, UpdateProductRequest $request)
     {
-        $product = $this->productRepository->findWithoutFail($id);
+        $product = $this->productRepository->findByUid($id);
 
         if (empty($product)) {
             Flash::error('Product not found');
@@ -153,7 +153,7 @@ class ProductController extends AppBaseController
      */
     public function destroy($id)
     {
-        $product = $this->productRepository->findWithoutFail($id);
+        $product = $this->productRepository->findByUid($id);
 
         if (empty($product)) {
             Flash::error('Product not found');
@@ -161,7 +161,7 @@ class ProductController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        $this->productRepository->delete($id);
+        $this->productRepository->deleteByUid($id);
 
         Flash::success('Product deleted successfully.');
 

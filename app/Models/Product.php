@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cocur\Slugify\Slugify;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -89,6 +90,15 @@ class Product extends Model
             'slug' => [
                 'source' => 'name',
                 'unique' => true,
+            ],
+            'uid' => [
+                'source' => 'id',
+                'unique' => true,
+                'separator' => '-',
+                'onUpdate' => true,
+                'method' => function ($string, $separator) {
+                    return 'P' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
+                }
             ],
         ];
     }

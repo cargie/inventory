@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Exception;
+use Prettus\Repository\Events\RepositoryEntityDeleted;
 
 abstract class BaseRepository extends \InfyOm\Generator\Common\BaseRepository
 {
@@ -70,4 +71,33 @@ abstract class BaseRepository extends \InfyOm\Generator\Common\BaseRepository
 
 	    return $model;
 	}
+
+	public function findByUid($id, $columns = ['*'])
+    {
+        try {
+            return $this->model->where('uid', $id)->first($columns);
+        } catch (Exception $e) {
+            return;
+        }
+    }
+
+    public function deleteByUid($id)
+    {
+        $this->applyScope();
+
+        $temporarySkipPresenter = $this->skipPresenter;
+        $this->skipPresenter(true);
+
+        $model = $this->findWhere([['uid', '=', $id]])->first();
+        $originalModel = clone $model;
+
+        $this->skipPresenter($temporarySkipPresenter);
+        $this->resetModel();
+
+        $deleted = $model->delete();
+
+        event(new RepositoryEntityDeleted($this, $originalModel));
+
+        return $deleted;
+    }
 }

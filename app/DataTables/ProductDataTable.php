@@ -70,7 +70,7 @@ class ProductDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['visible' => false],
+            'uid' => ['title' => 'ID'],
             'code',
             'name' => ['name' => 'name', 'data' => 'name'],
             'category' => ['name' => 'category.name', 'data' => 'category'],
