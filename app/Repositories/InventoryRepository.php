@@ -30,4 +30,9 @@ class InventoryRepository extends BaseRepository
     {
         return Inventory::class;
     }
+
+    public function create(array $attributes)
+    {
+        $model = parent::create($attributes);
+    }
 }
