@@ -72,7 +72,16 @@ class Category extends Model
             'slug' => [
                 'source' => 'name',
                 'unique' => true,
-            ]
+            ],
+            'uid' => [
+                'source' => 'id',
+                'unique' => true,
+                'separator' => '-',
+                'onUpdate' => true,
+                'method' => function ($string, $separator) {
+                    return 'CA' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
+                }
+            ],
         ];
     }
 

@@ -76,7 +76,7 @@ class CategoryController extends AppBaseController
      */
     public function show($id)
     {
-        $category = $this->categoryRepository->findWithoutFail($id);
+        $category = $this->categoryRepository->findByUid($id);
 
         if (empty($category)) {
             Flash::error('Category not found');
@@ -96,7 +96,7 @@ class CategoryController extends AppBaseController
      */
     public function edit($id)
     {
-        $category = $this->categoryRepository->findWithoutFail($id);
+        $category = $this->categoryRepository->findByUid($id);
 
         if (empty($category)) {
             Flash::error('Category not found');
@@ -117,7 +117,7 @@ class CategoryController extends AppBaseController
      */
     public function update($id, UpdateCategoryRequest $request)
     {
-        $category = $this->categoryRepository->findWithoutFail($id);
+        $category = $this->categoryRepository->findByUid($id);
 
         if (empty($category)) {
             Flash::error('Category not found');
@@ -141,7 +141,7 @@ class CategoryController extends AppBaseController
      */
     public function destroy($id)
     {
-        $category = $this->categoryRepository->findWithoutFail($id);
+        $category = $this->categoryRepository->findByUid($id);
 
         if (empty($category)) {
             Flash::error('Category not found');
@@ -149,7 +149,7 @@ class CategoryController extends AppBaseController
             return redirect(route('categories.index'));
         }
 
-        $this->categoryRepository->delete($id);
+        $this->categoryRepository->deleteByUid($id);
 
         Flash::success('Category deleted successfully.');
 

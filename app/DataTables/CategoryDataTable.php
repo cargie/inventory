@@ -68,7 +68,7 @@ class CategoryDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['visible' => false],
+            'uid' => ['title' => 'ID'],
             'name',
             'parent' => ['data' => 'parent', 'name' => 'parent.name', 'orderable' => false, 'searchable' => false],
             'description'
