@@ -19,6 +19,9 @@ class PaymentDataTable extends DataTable
         $dataTable = new EloquentDataTable($query);
 
         $dataTable->addColumn('action', 'payments.datatables_actions');
+        $dataTable->addColumn('order', function ($model) {
+            return $model->order->uid;
+        });
 
         return $dataTable;
     }
@@ -67,7 +70,7 @@ class PaymentDataTable extends DataTable
     {
         return [
             'uid' => ['title' => 'ID'],
-            'order_id' => ['title' => 'Order'],
+            'order' => ['title' => 'Order'],
             'amount',
             'paid_at',
         ];
