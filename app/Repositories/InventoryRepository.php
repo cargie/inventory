@@ -34,5 +34,13 @@ class InventoryRepository extends BaseRepository
     public function create(array $attributes)
     {
         $model = parent::create($attributes);
+
+        if($model->has('products')) {
+            foreach ($model->products as $product) {
+                $product->increment('available_quantity', $product->pivot->quantity);
+            }
+        }
+
+        return $model;
     }
 }
