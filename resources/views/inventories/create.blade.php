@@ -12,7 +12,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    @yield('form.start')
+                    @yield('form.open')
                     {!! Form::open(['route' => 'inventories.store']) !!}
 
                         @include('inventories.fields')
