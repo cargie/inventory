@@ -6,6 +6,7 @@ use App\DataTables\PaymentDataTable;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreatePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
+use App\Repositories\OrderRepository;
 use App\Repositories\PaymentRepository;
 use Flash;
 use Illuminate\Http\Request;
@@ -16,10 +17,12 @@ class PaymentController extends AppBaseController
 {
     /** @var  PaymentRepository */
     private $paymentRepository;
+    private $orderRepository;
 
-    public function __construct(PaymentRepository $paymentRepo)
+    public function __construct(PaymentRepository $paymentRepo, OrderRepository $orderRepo)
     {
         $this->paymentRepository = $paymentRepo;
+        $this->orderRepository = $orderRepo;
     }
 
     /**
@@ -46,7 +49,8 @@ class PaymentController extends AppBaseController
      */
     public function create()
     {
-        return view('payments.create');
+        $orders = $this->orderRepository->getAllUnPaid();
+        return view('payments.create', compact('orders'));
     }
 
     /**
@@ -76,14 +80,13 @@ class PaymentController extends AppBaseController
      */
     public function show($id)
     {
-        $payment = $this->paymentRepository->findWithoutFail($id);
+        $payment = $this->paymentRepository->findByUid($id);
 
         if (empty($payment)) {
             Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }
-
         return view('payments.show')->with('payment', $payment);
     }
 
@@ -96,7 +99,7 @@ class PaymentController extends AppBaseController
      */
     public function edit($id)
     {
-        $payment = $this->paymentRepository->findWithoutFail($id);
+        $payment = $this->paymentRepository->with(['order'])->findByUid($id);
 
         if (empty($payment)) {
             Flash::error('Payment not found');
@@ -117,7 +120,7 @@ class PaymentController extends AppBaseController
      */
     public function update($id, UpdatePaymentRequest $request)
     {
-        $payment = $this->paymentRepository->findWithoutFail($id);
+        $payment = $this->paymentRepository->findByUid($id);
 
         if (empty($payment)) {
             Flash::error('Payment not found');
@@ -141,7 +144,7 @@ class PaymentController extends AppBaseController
      */
     public function destroy($id)
     {
-        $payment = $this->paymentRepository->findWithoutFail($id);
+        $payment = $this->paymentRepository->findByUid($id);
 
         if (empty($payment)) {
             Flash::error('Payment not found');
@@ -149,7 +152,7 @@ class PaymentController extends AppBaseController
             return redirect(route('payments.index'));
         }
 
-        $this->paymentRepository->delete($id);
+        $this->paymentRepository->deleteByUid($id);
 
         Flash::success('Payment deleted successfully.');
 

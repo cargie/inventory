@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Payment extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Sluggable;
 
     public $table = 'payments';
     
@@ -26,7 +27,6 @@ class Payment extends Model
 
 
     public $fillable = [
-        'order_id',
         'paid_at',
         'amount',
         'mode',
@@ -49,12 +49,27 @@ class Payment extends Model
      * @var array
      */
     public static $rules = [
-        'order_id' => 'required|exists:orders,id',
-        'paid_at' => 'date|required',
+        'order' => 'required|exists:orders,id',
+        // 'paid_at' => 'date|required',
         'amount' => 'required|numeric|min:0',
         'mode' => 'required|in:cash,cheque,credit,debit',
         'note' => 'nullable'
     ];
+
+    public function sluggable()
+    {
+        return [
+            'uid' => [
+                'source' => 'id',
+                'unique' => true,
+                'separator' => '-',
+                'onUpdate' => true,
+                'method' => function ($string, $separator) {
+                    return 'PAY' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
+                }
+            ],
+        ];
+    }
 
     public function order()
     {

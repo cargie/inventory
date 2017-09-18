@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Payment;
+use Carbon\Carbon;
 
 /**
  * Class PaymentRepository
@@ -31,5 +32,18 @@ class PaymentRepository extends BaseRepository
     public function model()
     {
         return Payment::class;
+    }
+
+    public function create(array $attributes)
+    {
+        $attributes['paid_at'] = Carbon::now();
+
+        $model = parent::create($attributes);
+
+        $order = $model->refresh()->order;
+
+        $order->increment('paid_amount', $model->amount);
+
+        return $model;
     }
 }

@@ -66,8 +66,9 @@ class PaymentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['visible' => false],
+            'uid' => ['title' => 'ID'],
             'order_id' => ['title' => 'Order'],
+            'amount',
             'paid_at',
         ];
     }

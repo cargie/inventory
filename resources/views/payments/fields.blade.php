@@ -1,23 +1,35 @@
 <!-- Order Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('order_id', 'Order Id:') !!}
-    {!! Form::select('order_id', ['1' => '1'], null, ['class' => 'form-control']) !!}
-</div>
+<div class="row">
+	<div class="col-sm-6">
+		<div class="form-group col-sm-12">
+		    {!! Form::label('order', 'Order:') !!}
+		    <select name="order" id="order" class="form-control" required data-placeholder="-- Select --" style="width: 100%">
+		    	<option></option>
+		    	@foreach($orders as $order)
+					<option value="{{ $order->id }}">{{ $order->uid }}</option>
+		    	@endforeach
+		    </select>
+		</div>
 
-<!-- Amount Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('amount', 'Amount:') !!}
-    {!! Form::number('amount', null, ['class' => 'form-control']) !!}
-</div>
+		<!-- Mode Field -->
+		<div class="form-group col-sm-12">
+		    {!! Form::label('mode', 'Mode:') !!}
+		    {!! Form::select('mode',
+		    	['cash' => 'Cash', 'cheque' => 'Cheque', 'credit' => 'Credit', 'debit' => 'Debit'], null,
+		    	['class' => 'form-control', 'style' => 'width:100%', 'required']) !!}
+		</div>
 
-<!-- Mode Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('mode', 'Mode:') !!}
-    {!! Form::select('mode', ['cash' => 'cash', 'cheque' => 'cheque', 'credit' => 'credit'], null, ['class' => 'form-control']) !!}
-</div>
+		<!-- Amount Field -->
+		<div class="form-group col-sm-12">
+		    {!! Form::label('amount', 'Amount:') !!}
+		    {!! Form::number('amount', null, ['class' => 'form-control','required', 'min' => 0.01, 'step' => 0.01]) !!}
+		</div>
 
-<!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('payments.index') !!}" class="btn btn-default">Cancel</a>
+		<!-- Submit Field -->
+		<div class="form-group col-sm-12">
+		    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+		    <a href="{!! route('payments.index') !!}" class="btn btn-default">Cancel</a>
+		</div>
+
+	</div>
 </div>

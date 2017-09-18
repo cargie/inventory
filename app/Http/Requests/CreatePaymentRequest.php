@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Order;
 use App\Models\Payment;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePaymentRequest extends FormRequest
 {
@@ -25,6 +26,11 @@ class CreatePaymentRequest extends FormRequest
      */
     public function rules()
     {
-        return Payment::$rules;
+        $order = Order::find($this->order);
+
+        $rules = Payment::$rules;
+        $rules['amount'] = $rules['amount'] . '|max:' . $order->due_amount;
+
+        return $rules;
     }
 }
