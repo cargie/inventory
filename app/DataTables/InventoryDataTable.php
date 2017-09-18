@@ -67,7 +67,7 @@ class InventoryDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['visible' => false],
+            'id' => ['title' => 'ID'],
             'supplier' => ['data' => 'supplier.name', 'name' => 'supplier.name'],
             'supplied_at' => ['title' => 'Date'],
             'total_amount',
