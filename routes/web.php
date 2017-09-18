@@ -39,11 +39,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('payments', 'PaymentController');
 
 	Route::get('/dashboard', 'HomeController@index');
+
+    Route::resource('stock-adjustments', 'StockAdjustmentController');
 });
-
-
-
-
-
-
-

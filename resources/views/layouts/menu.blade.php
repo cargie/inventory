@@ -25,7 +25,8 @@
 	   Request::is('categories*') ||
 	   Request::is('tags*') ||
 	   Request::is('suppliers*') ||
-	   Request::is('inventories*') ? 'active' : '' }}">
+	   Request::is('inventories*') ||
+	   Request::is('stock-adjustments*') ? 'active' : '' }}">
 	<a href=""><i class="fa fa-cogs"></i>
 		<span>Inventory &amp; Setup</span>
 		<span class="pull-right-container">
@@ -35,6 +36,10 @@
 	<ul class="treeview-menu">
 		<li class="{{ Request::is('inventories*') ? 'active' : '' }}">
 		    <a href="{!! route('inventories.index') !!}"><i class="fa fa-archive"></i><span>Inventory</span></a>
+		</li>
+
+		<li class="{{ Request::is('stock-adjustments*') ? 'active' : '' }}">
+		    <a href="{!! route('stock-adjustments.index') !!}"><i class="fa fa-edit"></i><span>Stock Adjustments</span></a>
 		</li>
 
 		<li class="{{ Request::is('products*') ? 'active' : '' }}">
@@ -54,8 +59,3 @@
 		</li>
 	</ul>
 </li>
-
-
-
-
-

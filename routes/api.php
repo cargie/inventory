@@ -36,10 +36,12 @@ Route::resource('suppliers', 'SupplierAPIController');
 
 Route::resource('tags', 'TagAPIController');
 
-Route::resource('inventory_products', 'InventoryProductAPIController');
+Route::resource('inventory-products', 'InventoryProductAPIController');
 
 Route::resource('orders', 'OrderAPIController');
 
 Route::resource('payments', 'PaymentAPIController');
 
-Route::resource('order_products', 'OrderProductAPIController');
+Route::resource('order-products', 'OrderProductAPIController');
+
+Route::resource('stock-adjustments', 'StockAdjustmentAPIController');
