@@ -66,4 +66,11 @@ class OrderRepository extends BaseRepository
 
         return $model;
     }
+
+    public function getAllUnPaid($columns = ['*'])
+    {
+        $model = $this->model->whereColumn('total_amount', '>', 'paid_amount')->get($columns);
+
+        return $this->parserResult($model);
+    }
 }
