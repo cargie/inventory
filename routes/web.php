@@ -43,4 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('stock-adjustments', 'StockAdjustmentController');
 
     Route::resource('users', 'UserController');
+
+    Route::get('profile', 'ProfileController@index');
+    Route::post('profile', 'ProfileController@store');
 });
