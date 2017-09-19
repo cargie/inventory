@@ -137,7 +137,7 @@ class ProductController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        $product = $this->productRepository->update($request->all(), $id);
+        $product = $this->productRepository->updateBy($request->all(), 'uid', $id);
 
         Flash::success('Product updated successfully.');
 

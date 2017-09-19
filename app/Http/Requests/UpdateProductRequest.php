@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Product;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -26,7 +27,7 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         $rules = Product::$rules;
-        $rules['code'] = 'unique:products,code,' . $this->product;
+        $rules['code'] = Rule::unique('products')->ignore($this->product, 'uid');
         return $rules;
     }
 }
