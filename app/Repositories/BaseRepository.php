@@ -101,4 +101,14 @@ abstract class BaseRepository extends \InfyOm\Generator\Common\BaseRepository
 
     	return parent::update($attributes, $model->id);
     }
+
+    public function sum($field)
+    {
+    	return $this->model->sum($field);
+    }
+
+    public function avg($field)
+    {
+    	return $this->model->avg($field);
+    }
 }
