@@ -83,23 +83,17 @@ abstract class BaseRepository extends \InfyOm\Generator\Common\BaseRepository
 
     public function deleteByUid($id)
     {
-        $this->applyScope();
+        $model = $this->model->where('uid', $id)->firstOrFail();
 
-        $temporarySkipPresenter = $this->skipPresenter;
-        $this->skipPresenter(true);
-
-        $model = $this->findWhere([['uid', '=', $id]])->first();
-        $originalModel = clone $model;
-
-        $this->skipPresenter($temporarySkipPresenter);
-        $this->resetModel();
-
-        $deleted = $model->delete();
-
-        event(new RepositoryEntityDeleted($this, $originalModel));
-
-        return $deleted;
+        return parent::delete($model->id);
     }
+
+    public function deleteBy($field = 'id', $value)
+   	{
+   		$model = $this->model->where($field, $value)->firstOrFail();
+
+   		return parent::delete($model->id);
+   	}
 
     public function updateBy(array $attributes, $field = 'id', $value)
     {

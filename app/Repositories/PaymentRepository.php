@@ -46,4 +46,15 @@ class PaymentRepository extends BaseRepository
 
         return $model;
     }
+
+    public function deleteByUid($id)
+    {
+        $model = $this->model->where('uid', $id)->firstOrFail();
+
+        $order = $model->order;
+
+        $order->decrement('paid_amount', $model->amount);
+
+        return parent::deleteByUid($id);
+    }
 }
