@@ -19,7 +19,7 @@ class StockAdjustmentDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-        $dataTable->addColumn('action', 'stock_adjustments.datatables_actions');
+        // $dataTable->addColumn('action', 'stock_adjustments.datatables_actions');
         $dataTable->addColumn('total_quantity', function ($model) {
             return $model->products->sum('pivot.quantity');
         });
@@ -48,7 +48,7 @@ class StockAdjustmentDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%'])
+            // ->addAction(['width' => '10%'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
