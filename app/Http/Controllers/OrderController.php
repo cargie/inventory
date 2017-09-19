@@ -80,7 +80,7 @@ class OrderController extends AppBaseController
      */
     public function show($id)
     {
-        $order = $this->orderRepository->findByUid($id);
+        $order = $this->orderRepository->with(['customer', 'payments'])->findByUid($id);
 
         if (empty($order)) {
             Flash::error('Order not found');
