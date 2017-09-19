@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -26,4 +27,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static $rules = [
+        'name' => 'required|string',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'min:8|nullable',
+    ];
+
+    public function sluggable()
+    {
+        return [
+            'uid' => [
+                'source' => 'id',
+                'unique' => true,
+                'separator' => '-',
+                'onUpdate' => true,
+                'method' => function ($string, $separator) {
+                    return 'SU' . $separator . str_pad($string, 5, '0', STR_PAD_LEFT);
+                }
+            ],
+        ];
+    }
 }

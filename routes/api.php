@@ -45,3 +45,5 @@ Route::resource('payments', 'PaymentAPIController');
 Route::resource('order-products', 'OrderProductAPIController');
 
 Route::resource('stock-adjustments', 'StockAdjustmentAPIController');
+
+Route::resource('users', 'UserAPIController');
