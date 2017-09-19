@@ -23,7 +23,7 @@ class Payment extends Model
     public $table = 'payments';
     
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'paid_at'];
 
 
     public $fillable = [
