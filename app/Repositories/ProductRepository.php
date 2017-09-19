@@ -40,4 +40,9 @@ class ProductRepository extends BaseRepository
     {
         return Product::class;
     }
+
+    public function getReorderableProducts()
+    {
+        return $this->model->whereColumn('available_quantity', '<', 'reorder_point');
+    }
 }
