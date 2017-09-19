@@ -125,7 +125,7 @@ class CustomerController extends AppBaseController
             return redirect(route('customers.index'));
         }
 
-        $customer = $this->customerRepository->update($request->all(), $id);
+        $customer = $this->customerRepository->updateBy($request->all(), 'uid', $id);
 
         Flash::success('Customer updated successfully.');
 

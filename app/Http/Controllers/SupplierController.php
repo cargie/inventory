@@ -124,7 +124,7 @@ class SupplierController extends AppBaseController
             return redirect(route('suppliers.index'));
         }
 
-        $supplier = $this->supplierRepository->update($request->all(), $id);
+        $supplier = $this->supplierRepository->updateBy($request->all(), 'uid', $id);
 
         Flash::success('Supplier updated successfully.');
 
