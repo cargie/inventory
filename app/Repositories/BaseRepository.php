@@ -100,4 +100,11 @@ abstract class BaseRepository extends \InfyOm\Generator\Common\BaseRepository
 
         return $deleted;
     }
+
+    public function updateBy(array $attributes, $field = 'id', $value)
+    {
+    	$model = $this->model->where($field, $value)->firstOrFail();
+
+    	return parent::update($attributes, $model->id);
+    }
 }
