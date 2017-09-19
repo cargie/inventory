@@ -3,8 +3,9 @@
 namespace App\DataTables;
 
 use App\Models\Customer;
-use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\HtmlString;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class CustomerDataTable extends DataTable
 {
@@ -17,9 +18,12 @@ class CustomerDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-        $dataTable->addColumn('action', 'customers.datatables_actions');
+        // $dataTable->addColumn('action', 'customers.datatables_actions');
         $dataTable->addColumn('name', function ($model) {
             return $model->first_name . ' ' . $model->last_name;
+        });
+        $dataTable->editColumn('uid', function ($model) {
+            return new HtmlString('<a href="' . $model->uid . '">' . $model->uid . '</a>');
         });
 
         return $dataTable;
@@ -46,7 +50,7 @@ class CustomerDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    // ->addAction(['width' => '80px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
