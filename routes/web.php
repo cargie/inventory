@@ -11,10 +11,6 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
@@ -46,4 +42,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('profile', 'ProfileController@index');
     Route::post('profile', 'ProfileController@store');
+
+    Route::get('/', function () {
+        return redirect('dashboard');
+    });
 });
