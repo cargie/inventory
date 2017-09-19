@@ -3,8 +3,9 @@
 namespace App\DataTables;
 
 use App\Models\Order;
-use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\HtmlString;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class OrderDataTable extends DataTable
 {
@@ -18,9 +19,14 @@ class OrderDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        $dataTable->addColumn('action', 'orders.datatables_actions');
         $dataTable->addColumn('customer', function ($model) {
             return $model->customer->name;
+        });
+        $dataTable->addColumn('due_amount', function ($model) {
+            return $model->due_amount;
+        });
+        $dataTable->editColumn('uid', function ($model) {
+            return new HtmlString('<a href="' . route('orders.show', $model->uid) . '">' . $model->uid . '</a>');
         });
 
         return $dataTable;
@@ -47,7 +53,6 @@ class OrderDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
@@ -74,6 +79,7 @@ class OrderDataTable extends DataTable
             'mode',
             'total_amount',
             'paid_amount',
+            'due_amount' => ['orderable' => false, 'searchable' => false]
         ];
     }
 
