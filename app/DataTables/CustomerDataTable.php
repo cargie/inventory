@@ -23,7 +23,7 @@ class CustomerDataTable extends DataTable
             return $model->first_name . ' ' . $model->last_name;
         });
         $dataTable->editColumn('uid', function ($model) {
-            return new HtmlString('<a href="' . $model->uid . '">' . $model->uid . '</a>');
+            return new HtmlString('<a href="' . route('customers.show', $model->uid) . '">' . $model->uid . '</a>');
         });
 
         return $dataTable;
