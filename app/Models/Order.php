@@ -44,8 +44,8 @@ class Order extends Model
      */
     protected $casts = [
         'customer_id' => 'integer',
-        'total_amount' => 'double',
-        'paid_amount' => 'double',
+        'total_amount' => 'float',
+        'paid_amount' => 'float',
     ];
 
     /**
@@ -94,11 +94,6 @@ class Order extends Model
     
     public function getDueAmountAttribute()
     {
-        return number_format($this->total_amount - $this->paid_amount, 2 , '.' , '');
-    }
-
-    public function getPaidAmountAttribute($value)
-    {
-        return number_format($value, 2, '.', '');
+        return (float)number_format($this->total_amount - $this->paid_amount, 2 , '.' , '');
     }
 }
