@@ -42,7 +42,9 @@
                                     <td>{{ $order->due_amount }}</td>
                                 </tr>
                             @empty
-
+                                <tr>
+                                    <td colspan="6" align="center">No Order</td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
