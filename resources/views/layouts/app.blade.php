@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PrintBit</title>
+    <title>Yorbs Electronics</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.0.0/dist/vue-multiselect.min.css">
@@ -26,10 +26,10 @@
             <!-- Logo -->
             <a href="#" class="logo text-center">
                 <span class="logo-mini">
-                    <img src="/images/logo-sm.png" alt="PrintBit" class="img-responsive">
+                    <img src="/images/logo-sm.png" alt="Yorbs Electronics" class="img-responsive">
                 </span>
                 <span class="logo-lg text-center">
-                    <img class="img-responsive" src="/images/logo.png" alt="PrintBit" style="margin: 0 auto">
+                    <img class="img-responsive" src="/images/logo.png" alt="Yorbs Electronics" style="margin: 0 auto">
                 </span>
             </a>
 
@@ -93,7 +93,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © {{ date('Y') }} <a href="https://www.printbit.com">PrintBit</a>.</strong> All rights reserved.
+            <strong>Copyright © {{ date('Y') }} <a href="http://www.yorbs.net/">Yorbs Electronics</a>.</strong> All rights reserved.
         </footer>
 
     </div>
@@ -113,7 +113,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{!! url('/') !!}">
-                    PrintBit
+                    Yorbs Electronics
                 </a>
             </div>
 
