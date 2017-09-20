@@ -18,9 +18,9 @@
                 <div class="icon">
                     <i class="fa fa-money"></i>
                 </div>
-                <div href="{{ route('orders.index') }}" class="small-box-footer">
+                <a href="{{ route('orders.index') }}" class="small-box-footer">
                     <i class="fa fa-arrow-circle-right"></i>
-                </div>
+                </a>
             </div>
         </div>
         <div class="col-sm-3">
