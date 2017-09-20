@@ -85,6 +85,38 @@
                             </div>
                         </div>
                     </div>
+                    @if($product->attribute)
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                Attributes
+                            </h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                @foreach ($product->attribute as $attr)
+                                    <div class="form-group col-sm-6">
+                                        <label for="reorder_point">{{ $attr->key }}</label>
+                                        <p>{{ $attr->value }}</p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    @if($product->tags)
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                Tags
+                            </h3>
+                        </div>
+                        <div class="box-body">
+                            @foreach ($product->tags as $tag)
+                                <span class="label label-primary">
+                                    {{ $tag->name }}
+                                </span>
+                                &nbsp;
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-sm-3"></div>
