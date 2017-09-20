@@ -54,7 +54,7 @@ class Category extends Model
         'name' => 'required',
         // 'slug' => 'required|unique:categories,slug',
         'description' => 'string|nullable',
-        'parent_id' => 'exists:categories,id|nullable'
+        'parent' => 'exists:categories,id|nullable',
     ];
 
     /**
