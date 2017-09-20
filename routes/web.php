@@ -43,7 +43,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('profile', 'ProfileController@index');
     Route::post('profile', 'ProfileController@store');
 
-    Route::get('/', function () {
-        return redirect('dashboard');
-    });
+    Route::get('/', 'HomeController@index');
 });
