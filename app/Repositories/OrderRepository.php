@@ -67,6 +67,23 @@ class OrderRepository extends BaseRepository
         return $model;
     }
 
+    public function update(array $attributes, $id)
+    {
+        $old = $this->model->with(['products'])->where('uid', $id)->firstOrFail();
+
+        $update = parent::update($attributes, $old->id);
+
+        foreach ($old->products as $product) {
+            $product->increment('available_quantity', $product->pivot->quantity);
+        }
+
+        foreach ($update->products as $product) {
+            $product->decrement('available_quantity', $product->pivot->quantity);
+        }
+
+        return $update;
+    }
+
     public function getAllUnPaid($columns = ['*'])
     {
         $model = $this->model->whereColumn('total_amount', '>', 'paid_amount')->get($columns);
