@@ -35,12 +35,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>Yorbs </b>Electronics</a>
+        {{-- <a href="{{ url('/home') }}"><b>Yorbs </b>Electronics</a> --}}
     </div>
 
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <img src="http://www.yorbs.net/image/catalog/full-logo-small.jpg" class="img-responsive" alt="">
+        {{-- <p class="login-box-msg">Sign in to start your session</p> --}}
+        <br>
 
         <form method="post" action="{{ url('/login') }}">
             {!! csrf_field() !!}
