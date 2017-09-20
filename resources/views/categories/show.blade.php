@@ -4,7 +4,10 @@
     <section class="content-header">
         <h1>
             Category
-            <a href="{{ route('categories.show', $category->uid) }}" class="btn btn-primary pull-right">{{ $category->uid }}</a>
+            <a href="{{ route('categories.edit', $category->uid) }}" class="btn btn-primary pull-right">
+                <i class="fa fa-pencil"></i>
+                Edit
+            </a>
         </h1>
     </section>
     <div class="content">
