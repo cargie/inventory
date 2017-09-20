@@ -77,7 +77,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-success btn-block btn-flat">Sign In</button>
                 </div>
                 <!-- /.col -->
             </div>
@@ -99,8 +99,8 @@
 <script>
     $(function () {
         $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
             increaseArea: '20%' // optional
         });
     });
