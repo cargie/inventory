@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\User;
+use Illuminate\Support\HtmlString;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
@@ -15,7 +16,11 @@ class UserDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-        $dataTable->addColumn('action', 'users.datatables_actions');
+        // $dataTable->addColumn('action', 'users.datatables_actions');
+        $dataTable->editColumn('uid', function ($model) {
+            return new HtmlString('<a href="' . route('users.edit', $model->uid) . '">' . $model->uid . '</a>');
+        });
+
         return $dataTable;
     }
 
@@ -40,7 +45,7 @@ class UserDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%'])
+            // ->addAction(['width' => '10%'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
