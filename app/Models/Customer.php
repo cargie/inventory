@@ -50,8 +50,9 @@ class Customer extends Model
      */
     public static $rules = [
         'first_name' => 'required',
-        'last_name' => 'required',
-        'email' => 'email',
+        'last_name' => 'nullable',
+        'email' => 'email|nullable',
+        'phone' => 'nullable'
     ];
 
     public function sluggable()

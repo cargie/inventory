@@ -1,16 +1,26 @@
 <!-- Customer Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('customer', 'Customer:') !!}
-    <select name="customer" id="customer" required class="form-control" data-placeholder="-- Select --">
-        <option></option>
-        @foreach($customers as $customer)
-            @if(isset($order) && $order->customer_id == $customer->id)
-                <option selected value="{{ $customer->id }}">{{ $customer->name }}</option>
-            @else
-                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-            @endif
-        @endforeach
-    </select>
+    <div class="input-group">
+        <select name="customer" id="customer" required class="form-control" data-placeholder="-- Select --" style="width: 100%">
+            <option></option>
+            @foreach($customers as $customer)
+                @if(isset($order) && $order->customer_id == $customer->id)
+                    <option selected value="{{ $customer->id }}">{{ $customer->name . ' - ' . $customer->uid }}</option>
+                @else
+                    <option value="{{ $customer->id }}">{{ $customer->name . ' - ' . $customer->uid }}</option>
+                @endif
+            @endforeach
+        </select>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button"
+                data-toggle="modal"
+                data-target="#add-customer-modal"
+                style="padding: 5px 12px;">
+                <i class="fa fa-plus"></i>
+            </button>
+        </span>
+    </div>
 </div>
 
 <div class="form-group col-sm-6">
@@ -212,6 +222,40 @@
         </div>
     </form>
 </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="add-customer-modal">
+    <form v-on:submit.prevent="addCustomer()">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">New Customer</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input v-model="customer.first_name" required type="text" class="form-control" id="first_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input v-model="customer.last_name" type="text" class="form-control" id="last_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input v-model="customer.phone" type="tel" class="form-control" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input v-model="customer.email" type="email" class="form-control" id="email">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </form>
+</div>
 @endsection
 
 @section('scripts')
@@ -238,6 +282,12 @@
                 total_amount: '',
                 vat: 0,
                 discount: 0
+            },
+            customer: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                phone: ''
             },
             inventory: {!! isset($order) ? $order : '{paid_amount : "", due_amount: 0.00, total_amount: 0.00}' !!}
         },
@@ -304,6 +354,14 @@
                 self.new_product.vat = 0
                 self.new_product.discount = 0
             })
+            $("#add-customer-modal").on('hidden.bs.modal', function (e) {
+                self.customer = {
+                    first_name: '',
+                    last_name: '',
+                    email: '',
+                    phone: ''
+                }
+            })
 
             $("#new_product").attr('required', 'required')
 
@@ -341,6 +399,25 @@
             },
             selectedOption (selectedOption, id) {
                 this.new_product.price_per_unit = selectedOption.selling_price
+            },
+            addCustomer()
+            {
+                axios.post('/api/customers', {
+                    first_name: this.customer.first_name,
+                    last_name: this.customer.last_name,
+                    email: this.customer.email,
+                    phone: this.customer.phone
+                }).then((response) => {
+                    $("#add-customer-modal").modal('toggle')
+                    var option = new Option(response.data.data.first_name + ' ' +
+                                            (response.data.data.last_name || '') + ' - ' +
+                                            response.data.data.uid,
+                                            response.data.data.id);
+                    option.selected = true;
+                    $("#customer").append(option);
+                    $("#customer").trigger("change");
+                }).catch((response) => {
+                })
             }
         }
     })
