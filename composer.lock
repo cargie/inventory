@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c9029838ed8caa9eb09a6896f7827be",
+    "content-hash": "a5f8e5f295b08dd6e9b0fb172ba034a3",
     "packages": [
         {
             "name": "barryvdh/laravel-snappy",
@@ -133,16 +133,16 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "dev-master",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "faa40d9ddf5c3c72305ec18cefda93e1cc55a9c5"
+                "reference": "2407515c00bd4148c6ce8156f5f82e1a6349cac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/faa40d9ddf5c3c72305ec18cefda93e1cc55a9c5",
-                "reference": "faa40d9ddf5c3c72305ec18cefda93e1cc55a9c5",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/2407515c00bd4148c6ce8156f5f82e1a6349cac3",
+                "reference": "2407515c00bd4148c6ce8156f5f82e1a6349cac3",
                 "shasum": ""
             },
             "require": {
@@ -191,7 +191,7 @@
                 "slug",
                 "sluggable"
             ],
-            "time": "2017-09-05 15:15:07"
+            "time": "2017-08-31T18:16:01+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -975,65 +975,6 @@
             "time": "2017-08-31T01:01:54+00:00"
         },
         {
-            "name": "infyomlabs/laravel-generator",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/InfyOmLabs/laravel-generator.git",
-                "reference": "0e1cfa1ee1e0a888eda7aba4e36c80a475352c40"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/InfyOmLabs/laravel-generator/zipball/0e1cfa1ee1e0a888eda7aba4e36c80a475352c40",
-                "reference": "0e1cfa1ee1e0a888eda7aba4e36c80a475352c40",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "laracasts/flash": "~3.0",
-                "php": ">=5.5.9",
-                "prettus/l5-repository": "~2.6"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "InfyOm\\Generator\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mitul Golakiya",
-                    "email": "me@mitul.me"
-                }
-            ],
-            "description": "InfyOm Laravel Generator",
-            "keywords": [
-                "api",
-                "crud",
-                "generator",
-                "laravel",
-                "migration",
-                "model",
-                "repository",
-                "request",
-                "swagger",
-                "test",
-                "view"
-            ],
-            "time": "2017-09-09 11:23:05"
-        },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -1244,71 +1185,17 @@
             "time": "2017-06-16T07:50:40+00:00"
         },
         {
-            "name": "laracasts/flash",
-            "version": "3.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laracasts/flash.git",
-                "reference": "10cd420ab63fd0796bf5e1e5b99f87636d2f4333"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/flash/zipball/10cd420ab63fd0796bf5e1e5b99f87636d2f4333",
-                "reference": "10cd420ab63fd0796bf5e1e5b99f87636d2f4333",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "^6.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Laracasts\\Flash\\FlashServiceProvider"
-                    ],
-                    "aliases": {
-                        "Flash": "Laracasts\\Flash\\Flash"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Laracasts\\Flash": "src/"
-                },
-                "files": [
-                    "src/Laracasts/Flash/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jeffrey Way",
-                    "email": "jeffrey@laracasts.com"
-                }
-            ],
-            "description": "Easy flash notifications",
-            "time": "2017-06-22T19:01:19+00:00"
-        },
-        {
             "name": "laravel/framework",
-            "version": "v5.5.3",
+            "version": "v5.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "779a98d3b2ebed2128db1a668dcc10a65c9b01be"
+                "reference": "7a7b7c92ac6feae474cfe036a06643f5052d2e40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/779a98d3b2ebed2128db1a668dcc10a65c9b01be",
-                "reference": "779a98d3b2ebed2128db1a668dcc10a65c9b01be",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/7a7b7c92ac6feae474cfe036a06643f5052d2e40",
+                "reference": "7a7b7c92ac6feae474cfe036a06643f5052d2e40",
                 "shasum": ""
             },
             "require": {
@@ -1427,7 +1314,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-09-07T13:50:21+00:00"
+            "time": "2017-09-19T17:46:51+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1706,16 +1593,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "2.1.22",
+            "version": "2.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-                "reference": "bb7b3d9a72f56ddab974e6a629e4f5e51cd945a2"
+                "reference": "8682c955601b6de15a8c7d6e373b927cc8380627"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/bb7b3d9a72f56ddab974e6a629e4f5e51cd945a2",
-                "reference": "bb7b3d9a72f56ddab974e6a629e4f5e51cd945a2",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/8682c955601b6de15a8c7d6e373b927cc8380627",
+                "reference": "8682c955601b6de15a8c7d6e373b927cc8380627",
                 "shasum": ""
             },
             "require": {
@@ -1780,7 +1667,7 @@
                 "import",
                 "laravel"
             ],
-            "time": "2017-08-31T14:52:24+00:00"
+            "time": "2017-09-19T19:36:48+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2112,106 +1999,6 @@
                 "xlsx"
             ],
             "time": "2015-05-01T07:00:55+00:00"
-        },
-        {
-            "name": "prettus/l5-repository",
-            "version": "2.6.22",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/andersao/l5-repository.git",
-                "reference": "c28699dbe0823bb7e5f93c4f292018dcc163d5bc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/c28699dbe0823bb7e5f93c4f292018dcc163d5bc",
-                "reference": "c28699dbe0823bb7e5f93c4f292018dcc163d5bc",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/config": "~5.0",
-                "illuminate/console": "~5.0",
-                "illuminate/database": "~5.0",
-                "illuminate/filesystem": "~5.0",
-                "illuminate/http": "~5.0",
-                "illuminate/pagination": "~5.0",
-                "illuminate/support": "~5.0",
-                "prettus/laravel-validation": "1.1.*"
-            },
-            "suggest": {
-                "league/fractal": "Required to use the Fractal Presenter (0.12.*).",
-                "robclancy/presenter": "Required to use the Presenter Model (1.3.*)"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Prettus\\Repository\\": "src/Prettus/Repository/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anderson Andrade",
-                    "email": "contato@andersonandra.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel 5 - Repositories to  the database layer",
-            "keywords": [
-                "cache",
-                "eloquent",
-                "laravel",
-                "model",
-                "repository"
-            ],
-            "time": "2017-09-06T01:48:23+00:00"
-        },
-        {
-            "name": "prettus/laravel-validation",
-            "version": "1.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/andersao/laravel-validator.git",
-                "reference": "d9eb401fb3518a890b117e83bd25a4109fcdb704"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/andersao/laravel-validator/zipball/d9eb401fb3518a890b117e83bd25a4109fcdb704",
-                "reference": "d9eb401fb3518a890b117e83bd25a4109fcdb704",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.4",
-                "illuminate/validation": "~5.4",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Prettus\\Validator\\": "src/Prettus/Validator/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Anderson Andrade",
-                    "email": "contato@andersonandra.de"
-                }
-            ],
-            "description": "Laravel Validation Service",
-            "keywords": [
-                "laravel",
-                "service",
-                "validation"
-            ],
-            "time": "2017-08-28T23:28:32+00:00"
         },
         {
             "name": "psr/container",
@@ -3817,16 +3604,16 @@
         },
         {
             "name": "yajra/laravel-datatables-html",
-            "version": "v3.0.2",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-html.git",
-                "reference": "fbd97837d2021c5ed47d538316a5756efee13882"
+                "reference": "954598fe71810865d5865eff40301de6c7e5dbf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-html/zipball/fbd97837d2021c5ed47d538316a5756efee13882",
-                "reference": "fbd97837d2021c5ed47d538316a5756efee13882",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-html/zipball/954598fe71810865d5865eff40301de6c7e5dbf8",
+                "reference": "954598fe71810865d5865eff40301de6c7e5dbf8",
                 "shasum": ""
             },
             "require": {
@@ -3872,20 +3659,20 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2017-09-09T05:27:28+00:00"
+            "time": "2017-09-14T08:47:42+00:00"
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v8.0.2",
+            "version": "v8.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "b1fcc9be3403394791541ec839e1d89f3196e337"
+                "reference": "ae30aebeb2206d2975748f1568e3e9df9bc6c681"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/b1fcc9be3403394791541ec839e1d89f3196e337",
-                "reference": "b1fcc9be3403394791541ec839e1d89f3196e337",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/ae30aebeb2206d2975748f1568e3e9df9bc6c681",
+                "reference": "ae30aebeb2206d2975748f1568e3e9df9bc6c681",
                 "shasum": ""
             },
             "require": {
@@ -3942,22 +3729,22 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2017-09-06T00:36:58+00:00"
+            "time": "2017-09-12T05:24:50+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.0.1",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "bce341e3194bbeffa60ac782d645067557f5075e"
+                "reference": "01a859752094e00aa8548832312366753272f8af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/bce341e3194bbeffa60ac782d645067557f5075e",
-                "reference": "bce341e3194bbeffa60ac782d645067557f5075e",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/01a859752094e00aa8548832312366753272f8af",
+                "reference": "01a859752094e00aa8548832312366753272f8af",
                 "shasum": ""
             },
             "require": {
@@ -4012,7 +3799,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2017-08-29T08:54:25+00:00"
+            "time": "2017-09-18T13:32:46+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -4226,16 +4013,16 @@
         },
         {
             "name": "infyomlabs/adminlte-templates",
-            "version": "dev-develop",
+            "version": "5.5.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/InfyOmLabs/adminlte-templates.git",
-                "reference": "963dfdc141673bac21a573920ba65c017f8ea4e0"
+                "reference": "61164131a009d1e42f06142340f8efab1e6948a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/InfyOmLabs/adminlte-templates/zipball/963dfdc141673bac21a573920ba65c017f8ea4e0",
-                "reference": "963dfdc141673bac21a573920ba65c017f8ea4e0",
+                "url": "https://api.github.com/repos/InfyOmLabs/adminlte-templates/zipball/61164131a009d1e42f06142340f8efab1e6948a5",
+                "reference": "61164131a009d1e42f06142340f8efab1e6948a5",
                 "shasum": ""
             },
             "require": {
@@ -4243,6 +4030,13 @@
                 "php": ">=5.5.9"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\InfyOm\\AdminLTETemplates\\AdminLTETemplatesServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "InfyOm\\AdminLTETemplates\\": "src/"
@@ -4267,7 +4061,127 @@
                 "laravel",
                 "templates"
             ],
-            "time": "2017-09-07T18:07:51+00:00"
+            "time": "2017-09-16T05:07:29+00:00"
+        },
+        {
+            "name": "infyomlabs/laravel-generator",
+            "version": "5.5.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InfyOmLabs/laravel-generator.git",
+                "reference": "b0cd27100bc89fd155623a9a1994450259992878"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InfyOmLabs/laravel-generator/zipball/b0cd27100bc89fd155623a9a1994450259992878",
+                "reference": "b0cd27100bc89fd155623a9a1994450259992878",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "laracasts/flash": "~3.0",
+                "php": ">=5.5.9",
+                "prettus/l5-repository": "~2.6"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\InfyOm\\Generator\\InfyOmGeneratorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "InfyOm\\Generator\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mitul Golakiya",
+                    "email": "me@mitul.me"
+                }
+            ],
+            "description": "InfyOm Laravel Generator",
+            "keywords": [
+                "api",
+                "crud",
+                "generator",
+                "laravel",
+                "migration",
+                "model",
+                "repository",
+                "request",
+                "swagger",
+                "test",
+                "view"
+            ],
+            "time": "2017-09-16 05:10:47"
+        },
+        {
+            "name": "laracasts/flash",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/flash.git",
+                "reference": "10cd420ab63fd0796bf5e1e5b99f87636d2f4333"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/10cd420ab63fd0796bf5e1e5b99f87636d2f4333",
+                "reference": "10cd420ab63fd0796bf5e1e5b99f87636d2f4333",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "^6.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Flash\\FlashServiceProvider"
+                    ],
+                    "aliases": {
+                        "Flash": "Laracasts\\Flash\\Flash"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Flash": "src/"
+                },
+                "files": [
+                    "src/Laracasts/Flash/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Easy flash notifications",
+            "time": "2017-06-22T19:01:19+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -5142,6 +5056,106 @@
             "time": "2017-08-03T14:08:16+00:00"
         },
         {
+            "name": "prettus/l5-repository",
+            "version": "2.6.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andersao/l5-repository.git",
+                "reference": "c28699dbe0823bb7e5f93c4f292018dcc163d5bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/c28699dbe0823bb7e5f93c4f292018dcc163d5bc",
+                "reference": "c28699dbe0823bb7e5f93c4f292018dcc163d5bc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/database": "~5.0",
+                "illuminate/filesystem": "~5.0",
+                "illuminate/http": "~5.0",
+                "illuminate/pagination": "~5.0",
+                "illuminate/support": "~5.0",
+                "prettus/laravel-validation": "1.1.*"
+            },
+            "suggest": {
+                "league/fractal": "Required to use the Fractal Presenter (0.12.*).",
+                "robclancy/presenter": "Required to use the Presenter Model (1.3.*)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Prettus\\Repository\\": "src/Prettus/Repository/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anderson Andrade",
+                    "email": "contato@andersonandra.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel 5 - Repositories to  the database layer",
+            "keywords": [
+                "cache",
+                "eloquent",
+                "laravel",
+                "model",
+                "repository"
+            ],
+            "time": "2017-09-06T01:48:23+00:00"
+        },
+        {
+            "name": "prettus/laravel-validation",
+            "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andersao/laravel-validator.git",
+                "reference": "d9eb401fb3518a890b117e83bd25a4109fcdb704"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andersao/laravel-validator/zipball/d9eb401fb3518a890b117e83bd25a4109fcdb704",
+                "reference": "d9eb401fb3518a890b117e83bd25a4109fcdb704",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.4",
+                "illuminate/validation": "~5.4",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Prettus\\Validator\\": "src/Prettus/Validator/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Anderson Andrade",
+                    "email": "contato@andersonandra.de"
+                }
+            ],
+            "description": "Laravel Validation Service",
+            "keywords": [
+                "laravel",
+                "service",
+                "validation"
+            ],
+            "time": "2017-08-28T23:28:32+00:00"
+        },
+        {
             "name": "sebastian/code-unit-reverse-lookup",
             "version": "1.0.1",
             "source": {
@@ -5794,7 +5808,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cviebrock/eloquent-sluggable": 20,
         "infyomlabs/laravel-generator": 20,
         "infyomlabs/adminlte-templates": 20
     },
