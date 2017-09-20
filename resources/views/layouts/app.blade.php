@@ -29,7 +29,7 @@
                     <img src="/images/logo-sm.png" alt="Yorbs Electronics" class="img-responsive">
                 </span>
                 <span class="logo-lg text-center">
-                    <img class="img-responsive" src="/images/logo.png" alt="Yorbs Electronics" style="margin: 0 auto">
+                    <img class="img-responsive" src="http://www.yorbs.net/image/catalog/full-logo-small.jpg" alt="Yorbs Electronics" style="margin: 0 auto;height: 50px">
                 </span>
             </a>
 
@@ -55,7 +55,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="/images/logo-sm-w-bg.png"
+                                    <img src="/images/logo-sm.png"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}

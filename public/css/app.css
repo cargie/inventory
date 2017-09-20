@@ -8355,3 +8355,7 @@ button.close {
   height: 36px;
 }
 
+.main-header .logo {
+  background-color: #fff !important;
+}
+
