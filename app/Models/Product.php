@@ -42,7 +42,7 @@ class Product extends Model
         'selling_price',
         'reorder_point',
         'opening_stock',
-        'discount',
+        // 'discount',
         'vat',
         'attribute'
     ];
