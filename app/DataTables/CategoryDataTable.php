@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\HtmlString;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
 
@@ -18,10 +19,15 @@ class CategoryDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-        $dataTable->addColumn('action', 'categories.datatables_actions');
+
+        // $dataTable->addColumn('action', 'categories.datatables_actions');
         $dataTable->addColumn('parent', function ($model) {
             return optional($model->parent)->name;
         });
+        $dataTable->editColumn('uid', function ($model) {
+            return new HtmlString('<a href="' . route('categories.show', $model->uid) . '">' . $model->uid . '</a>');
+        });
+
         return $dataTable;
     }
 
@@ -46,7 +52,7 @@ class CategoryDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    // ->addAction(['width' => '80px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],

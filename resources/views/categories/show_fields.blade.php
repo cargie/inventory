@@ -1,42 +1,30 @@
 <!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $category->id !!}</p>
+<div class="form-group col-sm-6">
+    {!! Form::label('id', 'ID:') !!}
+    <p>{!! $category->uid !!}</p>
 </div>
 
 <!-- Name Field -->
-<div class="form-group">
+<div class="form-group col-sm-6">
     {!! Form::label('name', 'Name:') !!}
     <p>{!! $category->name !!}</p>
 </div>
 
 <!-- Slug Field -->
-<div class="form-group">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('slug', 'Slug:') !!}
     <p>{!! $category->slug !!}</p>
-</div>
+</div> --}}
 
 <!-- Description Field -->
-<div class="form-group">
+<div class="form-group col-sm-6">
     {!! Form::label('description', 'Description:') !!}
     <p>{!! $category->description !!}</p>
 </div>
 
 <!-- Parent Id Field -->
-<div class="form-group">
-    {!! Form::label('parent_id', 'Parent Id:') !!}
-    <p>{!! $category->parent_id !!}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $category->created_at !!}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $category->updated_at !!}</p>
+<div class="form-group col-sm-6">
+    {!! Form::label('parent_id', 'Parent:') !!}
+    <p>{!! optional($category->parent)->name !!}</p>
 </div>
 
