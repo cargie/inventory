@@ -12,7 +12,7 @@
            <div class="box-body">
                <div class="row">
                     @yield('form.open')
-                    {!! Form::model($order, ['route' => ['orders.update', $order->id], 'method' => 'patch']) !!}
+                    {!! Form::model($order, ['route' => ['orders.update', $order->uid], 'method' => 'patch']) !!}
 
                         @include('orders.fields')
 
