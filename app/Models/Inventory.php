@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -19,7 +20,7 @@ class Inventory extends Model
 
     public $table = 'inventories';
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'supplied_at'];
 
     public $fillable = [
         'supplier_id',
@@ -59,5 +60,10 @@ class Inventory extends Model
     {
         return $this->belongsToMany(Product::class, 'inventory_products')
             ->withPivot('quantity','price_per_unit', 'total_amount', 'sold_quantity');
+    }
+
+    public function setSuppliedAtAttribute($value)
+    {
+        $this->attributes['supplied_at'] = Carbon::parse($value);
     }
 }

@@ -3,8 +3,9 @@
 namespace App\DataTables;
 
 use App\Models\Inventory;
-use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\HtmlString;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class InventoryDataTable extends DataTable
 {
@@ -18,8 +19,10 @@ class InventoryDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        $dataTable->addColumn('action', 'inventories.datatables_actions');
-        
+        // $dataTable->addColumn('action', 'inventories.datatables_actions');
+        $dataTable->editColumn('id', function ($model) {
+            return new HtmlString('<a href="' . route('inventories.show', $model->id) . '">' . $model->id . '</a>');
+        });      
 
         return $dataTable;
     }
@@ -45,7 +48,7 @@ class InventoryDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    // ->addAction(['width' => '80px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],

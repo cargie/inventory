@@ -19,8 +19,7 @@ class InventoryRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'supplier_id',
-        'supplied_at'
+        'supplier.name' => 'like',
     ];
 
     /**
@@ -42,5 +41,22 @@ class InventoryRepository extends BaseRepository
         }
 
         return $model;
+    }
+
+    public function update(array $attributes, $id)
+    {
+        $old = $this->model->with(['products'])->findOrFail($id);
+
+        $update = parent::update($attributes, $id);
+
+        foreach ($old->products as $product) {
+            $product->decrement('available_quantity', $product->pivot->quantity);
+        }
+
+        foreach ($update->products as $product) {
+            $product->increment('available_quantity', $product->pivot->quantity);
+        }
+
+        return $update;
     }
 }
