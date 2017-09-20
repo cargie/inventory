@@ -3,8 +3,9 @@
 namespace App\DataTables;
 
 use App\Models\Product;
-use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\HtmlString;
 use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Services\DataTable;
 
 class ProductDataTable extends DataTable
 {   
@@ -17,11 +18,15 @@ class ProductDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-        $dataTable->addColumn('action', 'products.datatables_actions');
+        // $dataTable->addColumn('action', 'products.datatables_actions');
         $dataTable->addColumn('category', function ($model) {
             return optional($model->category)->name;
-        });$dataTable->addColumn('quantity', function ($model) {
+        });
+        $dataTable->addColumn('quantity', function ($model) {
             return $model->inventories->sum('pivot.quantity');
+        });
+        $dataTable->editColumn('uid', function ($model) {
+            return new HtmlString('<a href="' . route('products.show' , $model->uid) . '">' . $model->uid . '</a>');
         });
 
         return $dataTable;
@@ -48,7 +53,7 @@ class ProductDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    // ->addAction(['width' => '80px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
@@ -77,6 +82,7 @@ class ProductDataTable extends DataTable
             'cost_price',
             'selling_price',
             'available_quantity' => ['title' => 'Available Qty.'],
+            'reorder_point',
         ];
     }
 
