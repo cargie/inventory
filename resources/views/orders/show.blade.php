@@ -1,17 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
+    <section class="content-header hidden-print">
         <h1>
             Order
         </h1>
     </section>
-    <div class="content">
+    <div class="content hidden-print">
         <div class="row">
             <div class="col-sm-9">
                 <div class="box box-primary">
                     <div class="box-body">
-                        <a href="{{ route('orders.edit', $order->uid) }}" class="pull-right btn btn-primary">Edit</a>
+                        <div class="btn-group pull-right btn-group-sm" role="group">
+                            {{-- <a href="#" class="btn btn-primary">
+                                <i class="fa fa-envelope"></i>
+                                Email
+                            </a> --}}
+                            <a href="javascript:window.print()" class="btn btn-primary">
+                                <i class="fa fa-print"></i>
+                                Print</a>
+                            <a href="{{ route('orders.edit', $order->uid) }}" class="btn btn-primary">
+                                <i class="fa fa-pencil"></i>
+                                Edit</a>
+                        </div>
                         <div class="clearfix"></div>
                         <div class="row">
                             <div class="form-group col-sm-6">
@@ -122,5 +133,100 @@
         <a href="{!! route('orders.index') !!}" class="btn btn-default">
             <i class="fa fa-angle-double-left"></i>
             Back</a>
+    </div>
+    <div class="section visible-print-block invoice">
+        <h2 class="page-header">
+            Yorbs Electronics
+            
+            <small class="pull-right">
+                {{ $order->created_at->format("M d, Y H:i A") }}
+            </small>
+        </h2>
+        <div class="row">
+            <div class="col-xs-4">
+                From
+                <address>
+                    <strong>Yorbs Electronics</strong><br>
+                    2nd Fl. Gillamac's Bldg., CPG Ave. <br>
+                    Tagbilaran City, Bohol <br>
+                    Phone: +63917-505-9268 <br>
+                    Tel. No. (038) 501-9354 <br>
+                    E-mail: roy@yorbs.net <br>
+                </address>
+            </div>
+            <div class="col-xs-4">
+                To
+                <address>
+                    <strong>{{ $order->customer->name }}</strong><br>
+                    @if ($order->customer->phone)
+                        Phone: {{ $order->customer->phone }} <br>
+                    @endif
+                    @if ($order->customer->email)
+                        Email: {{ $order->customer->email }} <br>
+                    @endif
+                </address>
+            </div>
+            <div class="col-xs-4">
+                <b>Order: #{{ $order->id }}</b><br><br>
+                <b>Order ID:</b> {{ $order->uid }} <br>
+                <b>Account:</b> {{ $order->customer->uid }} <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Qty</th>
+                            <th>Product</th>
+                            <th>Code</th>
+                            <th>Description</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($order->products as $product)
+                            <tr>
+                                <td>{{ $product->pivot->quantity }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->code }}</td>
+                                <td>{{ $product->description }}</td>
+                                <td>{{ $product->pivot->amount }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+            </div>
+            <div class="col-xs-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Tax:</th>
+                            <td>{{ $order->products->sum('pivot.tax') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Discount:</th>
+                            <td>{{ $order->products->sum('pivot.discount') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total:</th>
+                            <td>{{ $order->total_amount }}</td>
+                        </tr>
+                        <tr>
+                            <th>Paid:</th>
+                            <td>{{ $order->paid_amount }}</td>
+                        </tr>
+                        <tr>
+                            <th>Due:</th>
+                            <td>{{ $order->due_amount }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection

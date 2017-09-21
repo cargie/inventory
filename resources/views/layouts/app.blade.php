@@ -92,7 +92,7 @@
         </div>
 
         <!-- Main Footer -->
-        <footer class="main-footer" style="max-height: 100px;text-align: center">
+        <footer class="main-footer hidden-print" style="max-height: 100px;text-align: center">
             <strong>Copyright © {{ date('Y') }} <a href="http://www.yorbs.net/">Yorbs Electronics</a>.</strong> All rights reserved.
         </footer>
 
