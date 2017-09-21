@@ -28,7 +28,7 @@ class Category extends Model
 
     public $fillable = [
         'name',
-        'slug',
+        // 'slug',
         'description',
         'parent_id'
     ];
