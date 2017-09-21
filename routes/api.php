@@ -47,3 +47,5 @@ Route::resource('order-products', 'OrderProductAPIController');
 Route::resource('stock-adjustments', 'StockAdjustmentAPIController');
 
 Route::resource('users', 'UserAPIController');
+
+Route::resource('roles', 'RoleAPIController');
