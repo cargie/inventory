@@ -3,9 +3,9 @@
     <a href="{!! route('addresses.index') !!}"><i class="fa fa-edit"></i><span>Addresses</span></a>
 </li> --}}
 <li class="{{ Request::is('dashboard*') ? 'active' : '' }}">
-	<a href="/dashboard">
-		<i class="fa fa-dashboard"></i><span>Dashboard</span>
-	</a>
+    <a href="/dashboard">
+        <i class="fa fa-dashboard"></i><span>Dashboard</span>
+    </a>
 </li>
 
 <li class="{{ Request::is('orders*') ? 'active' : '' }}">
@@ -21,45 +21,63 @@
 </li>
 
 <li class="treeview
-	{{ Request::is('products*') ||
-	   Request::is('categories*') ||
-	   Request::is('tags*') ||
-	   Request::is('suppliers*') ||
-	   Request::is('inventories*') ||
-	   Request::is('stock-adjustments*') ? 'active' : '' }}">
-	<a href=""><i class="fa fa-cogs"></i>
-		<span>Inventory &amp; Setup</span>
-		<span class="pull-right-container">
-        	<i class="fa fa-angle-left pull-right"></i>
-      	</span>
-	</a>
-	<ul class="treeview-menu">
-		<li class="{{ Request::is('inventories*') ? 'active' : '' }}">
-		    <a href="{!! route('inventories.index') !!}"><i class="fa fa-archive"></i><span>Inventory</span></a>
-		</li>
+    {{ Request::is('products*') ||
+       Request::is('categories*') ||
+       Request::is('tags*') ||
+       Request::is('suppliers*') ||
+       Request::is('inventories*') ||
+       Request::is('stock-adjustments*') ? 'active' : '' }}">
+    <a href=""><i class="fa fa-cogs"></i>
+        <span>Inventory &amp; Setup</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="{{ Request::is('inventories*') ? 'active' : '' }}">
+            <a href="{!! route('inventories.index') !!}"><i class="fa fa-archive"></i><span>Inventory</span></a>
+        </li>
 
-		<li class="{{ Request::is('stock-adjustments*') ? 'active' : '' }}">
-		    <a href="{!! route('stock-adjustments.index') !!}"><i class="fa fa-edit"></i><span>Stock Adjustments</span></a>
-		</li>
+        <li class="{{ Request::is('stock-adjustments*') ? 'active' : '' }}">
+            <a href="{!! route('stock-adjustments.index') !!}"><i class="fa fa-edit"></i><span>Stock Adjustments</span></a>
+        </li>
 
-		<li class="{{ Request::is('products*') ? 'active' : '' }}">
-		    <a href="{!! route('products.index') !!}"><i class="fa fa-product-hunt"></i><span>Products</span></a>
-		</li>
+        <li class="{{ Request::is('products*') ? 'active' : '' }}">
+            <a href="{!! route('products.index') !!}"><i class="fa fa-product-hunt"></i><span>Products</span></a>
+        </li>
 
-		<li class="{{ Request::is('categories*') ? 'active' : '' }}">
-		    <a href="{!! route('categories.index') !!}"><i class="fa fa-folder"></i><span>Categories</span></a>
-		</li>
+        <li class="{{ Request::is('categories*') ? 'active' : '' }}">
+            <a href="{!! route('categories.index') !!}"><i class="fa fa-folder"></i><span>Categories</span></a>
+        </li>
 
-		<li class="{{ Request::is('tags*') ? 'active' : '' }}">
-		    <a href="{!! route('tags.index') !!}"><i class="fa fa-tags"></i><span>Tags</span></a>
-		</li>
+        <li class="{{ Request::is('tags*') ? 'active' : '' }}">
+            <a href="{!! route('tags.index') !!}"><i class="fa fa-tags"></i><span>Tags</span></a>
+        </li>
 
-		<li class="{{ Request::is('suppliers*') ? 'active' : '' }}">
-		    <a href="{!! route('suppliers.index') !!}"><i class="fa fa-user-plus"></i><span>Suppliers</span></a>
-		</li>
-	</ul>
+        <li class="{{ Request::is('suppliers*') ? 'active' : '' }}">
+            <a href="{!! route('suppliers.index') !!}"><i class="fa fa-user-plus"></i><span>Suppliers</span></a>
+        </li>
+    </ul>
 </li>
-<li class="{{ Request::is('users*') ? 'active' : '' }}">
-    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Users</span></a>
+<li class="treeview
+    {{ Request::is('users*') ||
+       Request::is('roles*') ? 'active' : ''}}">
+    <a href=""><i class="fa fa-cog"></i>
+        <span>Manage User</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="{{ Request::is('users*') ? 'active' : '' }}">
+            <a href="{{ route('users.index') }}">
+                <i class="fa fa-user"></i><span>Users</span>
+            </a>
+        </li>
+
+        <li class="{{ Request::is('roles*') ? 'active' : '' }}">
+            <a href="{!! route('roles.index') !!}"><i class="fa fa-users"></i><span>Roles</span></a>
+        </li>
+    </ul>
 </li>
 

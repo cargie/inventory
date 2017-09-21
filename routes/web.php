@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('customers', 'CustomerController');
 
-    Route::resource('addresses', 'AddressController');
+    // Route::resource('addresses', 'AddressController');
 
     Route::resource('products', 'ProductController');
    
@@ -32,16 +32,24 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::resource('orders', 'OrderController');
 
-	Route::resource('payments', 'PaymentController');
+	Route::resource('payments', 'PaymentController', [
+        'only' => ['index', 'create', 'delete']
+    ]);
 
-	Route::get('dashboard', 'HomeController@index');
+	Route::get('dashboard', 'HomeController@index')->name('dashboard');
 
-    Route::resource('stock-adjustments', 'StockAdjustmentController');
+    Route::resource('stock-adjustments', 'StockAdjustmentController', [
+        'only' => ['index', 'create', 'store']
+    ]);
 
     Route::resource('users', 'UserController');
 
-    Route::get('profile', 'ProfileController@index');
-    Route::post('profile', 'ProfileController@store');
+    Route::get('profile', 'ProfileController@index')->name('profile.show');
+    Route::post('profile', 'ProfileController@store')->name('profile.update');
 
     Route::redirect('/', '/dashboard', 301);
+
+    Route::resource('roles', 'RoleController', [
+        'except' => ['show']
+    ]);
 });
