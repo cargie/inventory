@@ -54,6 +54,7 @@ class StockAdjustmentDataTable extends DataTable
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
+                    'create',
                     'print',
                     'reset',
                     'reload',
