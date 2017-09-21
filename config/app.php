@@ -186,6 +186,7 @@ return [
         InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
         InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*
