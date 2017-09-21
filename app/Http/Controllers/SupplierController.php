@@ -75,7 +75,7 @@ class SupplierController extends AppBaseController
      */
     public function show($id)
     {
-        $supplier = $this->supplierRepository->findByUid($id);
+        $supplier = $this->supplierRepository->with(['inventories','products.product.category'])->findByUid($id);
 
         if (empty($supplier)) {
             Flash::error('Supplier not found');

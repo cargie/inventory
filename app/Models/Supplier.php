@@ -67,6 +67,11 @@ class Supplier extends Model
         return $this->hasManyThrough(InventoryProduct::class, Inventory::class);
     }
 
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+
     public function sluggable()
     {
         return [

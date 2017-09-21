@@ -62,5 +62,9 @@ class InventoryProduct extends Model
         'sold_quantity' => 'numeric|min:0|nullable'
     ];
 
-    
+    public function product()
+    {
+        return $this->belongsTo(Product::class)
+            ->withTrashed();
+    }
 }

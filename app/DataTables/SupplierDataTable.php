@@ -19,13 +19,16 @@ class SupplierDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        $dataTable->addColumn('action', 'suppliers.datatables_actions');
+        // $dataTable->addColumn('action', 'suppliers.datatables_actions');
         $dataTable->editColumn('is_active', function ($model) {
             if ($model->is_active) {
                 return new HtmlString('<span class="label label-success">Active</span>');
             } else {
                 return new HtmlString('<span class="label label-danger">Inactive</span>');
             }
+        });
+        $dataTable->editColumn('uid', function ($model) {
+            return new HtmlString('<a href="' . route('suppliers.show', $model->uid) . '">' . $model->uid . '</a>');
         });
 
         return $dataTable;
@@ -52,7 +55,7 @@ class SupplierDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    // ->addAction(['width' => '80px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
@@ -79,7 +82,7 @@ class SupplierDataTable extends DataTable
             'email',
             'phone',
             'description',
-            'is_active',
+            'is_active' => ['title' => 'Active'],
         ];
     }
 
