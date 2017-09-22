@@ -14,11 +14,13 @@
 					@foreach($chunk as $permission)
 						@if(isset($role) && $role->hasPermissionTo($permission))
 							<label>
-								<input type="checkbox" checked name="permissions[{{$permission->id}}]" value="{{ $permission->id }}"> {{ $permission->name }}
+								<input type="checkbox" checked name="permissions[{{$permission->id}}]" value="{{ $permission->id }}">
+									{{ ucwords(str_replace('-', ' ',$permission->name)) }}
 							</label><br>
 						@else
 							<label>
-								<input type="checkbox" name="permissions[{{$permission->id}}]" value="{{ $permission->id }}"> {{ $permission->name }}
+								<input type="checkbox" name="permissions[{{$permission->id}}]" value="{{ $permission->id }}">
+									{{ ucwords(str_replace('-', ' ',$permission->name)) }}
 							</label><br>
 						@endif
 					@endforeach
