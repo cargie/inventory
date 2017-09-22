@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\UserDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
+use Spatie\Permission\Models\Role;
 
 class UserController extends AppBaseController
 {
@@ -96,8 +97,8 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-
-        return view('users.edit')->with('user', $user);
+        $roles = Role::get();
+        return view('users.edit', compact('roles'))->with('user', $user);
     }
 
     /**
