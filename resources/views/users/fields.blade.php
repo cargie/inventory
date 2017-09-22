@@ -15,7 +15,7 @@
     <div class="checkbox well well-sm">
 	    @foreach($roles as $role)
 			<label>
-				@if($user->hasRole($role))
+				@if(isset($user) && $user->hasRole($role))
 					<input type="checkbox" name="roles[]" checked value="{{ $role->id }}"> {{ $role->name }}
 				@else
 					<input type="checkbox" name="roles[]" value="{{ $role->id }}"> {{ $role->name }}
