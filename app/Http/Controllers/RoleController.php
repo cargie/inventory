@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\RoleDataTable;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests;
 use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Repositories\RoleRepository;
 use Flash;
-use App\Http\Controllers\AppBaseController;
 use Response;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends AppBaseController
 {
@@ -39,7 +40,8 @@ class RoleController extends AppBaseController
      */
     public function create()
     {
-        return view('roles.create');
+        $permissions = Permission::get();
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -96,8 +98,8 @@ class RoleController extends AppBaseController
 
             return redirect(route('roles.index'));
         }
-
-        return view('roles.edit')->with('role', $role);
+        $permissions = Permission::get();
+        return view('roles.edit', compact('permissions'))->with('role', $role);
     }
 
     /**
