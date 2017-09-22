@@ -27,6 +27,14 @@ class UpdateRoleRequest extends FormRequest
         return [
             'name' => 'required|unique:roles,name,' . $this->role,
             'permissions' => 'required|array',
+            'permissions.*' => 'exists:permissions,id',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'permissions.*.exists' => 'The selected permission is invalid.'
         ];
     }
 }
