@@ -28,7 +28,16 @@ class UpdateUserRequest extends FormRequest
     {
         $rules = User::$rules;
         $rules['email'] = Rule::unique('users')->ignore($this->user, 'uid');
-        
+        $rules['roles'] = 'array|required';
+        $rules['roles.*'] = 'exists:roles,id';
+
         return $rules;
+    }
+
+    public function messages()
+    {
+        return [
+            'roles.*.exists' => 'The selected role is invalid.'
+        ];
     }
 }

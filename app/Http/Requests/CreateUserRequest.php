@@ -25,6 +25,17 @@ class CreateUserRequest extends FormRequest
      */
     public function rules()
     {
-        return User::$rules;
+        $rules = User::$rules;
+        $rules['roles'] = 'array|required';
+        $rules['roles.*'] = 'exists:roles,id';
+
+        return $rules;
+    }
+
+    public function messages()
+    {
+        return [
+            'roles.*.exists' => 'The selected role is invalid.'
+        ];
     }
 }
