@@ -9,7 +9,10 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, Sluggable, HasRoles;
+    use Notifiable, Sluggable, HasRoles {
+        hasRole as protected thasRole;
+        hasAllRoles as protected thasAllRoles;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -53,5 +56,13 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function hasRole($roles) {
+        return $this->id == 1 || $this->thasRole($roles);
+    }
+
+    public function hasAllRoles($roles) {
+        return $this->id == 1 || $this->thasAllRoles($roles);
     }
 }
