@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'permission']], function () {
     
 
     Route::resource('tags', 'TagController', [
