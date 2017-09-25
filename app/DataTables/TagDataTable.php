@@ -64,7 +64,6 @@ class TagDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['visible' => false],
             'name',
             'description',
         ];
