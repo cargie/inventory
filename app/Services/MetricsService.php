@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Order;
 use App\Repositories\OrderRepository;
+use App\Repositories\PaymentRepository;
 use App\Repositories\ProductRepository;
 use Carbon\Carbon;
 
@@ -12,26 +13,29 @@ class MetricsService
 
 	private $orderRepository;
 	private $productRepository;
+	private $paymentRepository;
 
 	public function __construct(
 		OrderRepository $orderRepo,
-		ProductRepository $productRepo
+		ProductRepository $productRepo,
+		PaymentRepository $paymentRepo
 	)
 	{
 		$this->orderRepository = $orderRepo;
 		$this->productRepository = $productRepo;
+		$this->paymentRepository = $paymentRepo;
 	}
 
 	public function total_revenue()
 	{
-		return $this->orderRepository->sum('paid_amount');
+		return $this->paymentRepository->sum('amount');
 	}
 
 	public function today_revenue()
 	{
-		return $this->orderRepository->findWhere([
+		return $this->paymentRepository->findWhere([
 			['created_at', '>', Carbon::today()],
-		])->sum('paid_amount');
+		])->sum('amount');
 	}
 
 	public function avg_revenue()
