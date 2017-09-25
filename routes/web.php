@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('orders', 'OrderController');
 
 	Route::resource('payments', 'PaymentController', [
-        'only' => ['index', 'create', 'delete', 'store']
+        'only' => ['index', 'create', 'destroy', 'store']
     ]);
 
 	Route::get('dashboard', 'HomeController@index')->name('dashboard');
