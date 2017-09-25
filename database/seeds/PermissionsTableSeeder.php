@@ -14,7 +14,7 @@ class PermissionsTableSeeder extends Seeder
     {
         $routes = [
         	'category', 'tag', 'product', 'supplier',
-        	'inventory', 'stock adjustment', 'customer',
+        	'inventory', 'stock-adjustment', 'customer',
         	'user', 'role', 'payment', 'order'
        	];
 
