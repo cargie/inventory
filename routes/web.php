@@ -16,7 +16,9 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     
 
-    Route::resource('tags', 'TagController');
+    Route::resource('tags', 'TagController', [
+        'except' => ['show']
+    ]);
 
     Route::resource('suppliers', 'SupplierController');
 
