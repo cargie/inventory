@@ -51,19 +51,10 @@ class RoleDataTable extends DataTable
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
-                    'create',
+                    'export',
                     'print',
                     'reset',
                     'reload',
-                    [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
-                         'buttons' => [
-                             'csv',
-                             'excel',
-                             'pdf',
-                         ],
-                    ],
                     'colvis'
                 ]
             ]);
