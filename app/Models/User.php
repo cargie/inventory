@@ -67,8 +67,8 @@ class User extends Authenticatable
         return $this->id == 1 || $this->thasAllRoles($roles);
     }
 
-    public function hasPermissionTo(...$permissions)
+    public function hasPermissionTo($permission, $guardName = null)
     {
-        return $this->id == 1 || $this->thasPermissionTo($permissions);
+        return $this->id == 1 || $this->thasPermissionTo($permission, $guardName = null);
     }
 }
