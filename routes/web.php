@@ -13,10 +13,12 @@
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'permission']], function () {
     
 
-    Route::resource('tags', 'TagController');
+    Route::resource('tags', 'TagController', [
+        'except' => ['show']
+    ]);
 
     Route::resource('suppliers', 'SupplierController');
 
@@ -33,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('orders', 'OrderController');
 
 	Route::resource('payments', 'PaymentController', [
-        'only' => ['index', 'create', 'delete', 'store']
+        'only' => ['index', 'create', 'destroy', 'store']
     ]);
 
 	Route::get('dashboard', 'HomeController@index')->name('dashboard');

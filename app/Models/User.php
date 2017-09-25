@@ -12,6 +12,7 @@ class User extends Authenticatable
     use Notifiable, Sluggable, HasRoles {
         hasRole as protected thasRole;
         hasAllRoles as protected thasAllRoles;
+        hasPermissionTo as protected thasPermissionTo;
     }
 
     /**
@@ -64,5 +65,10 @@ class User extends Authenticatable
 
     public function hasAllRoles($roles) {
         return $this->id == 1 || $this->thasAllRoles($roles);
+    }
+
+    public function hasPermissionTo($permission, $guardName = null)
+    {
+        return $this->id == 1 || $this->thasPermissionTo($permission, $guardName = null);
     }
 }

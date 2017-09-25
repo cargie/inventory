@@ -153,6 +153,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
     <script>
         $(function () {
+            $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
             $('select').select2({
                 allowClear: true
             })

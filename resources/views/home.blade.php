@@ -8,6 +8,11 @@
 </section>
 @inject('metrics', 'App\Services\MetricsService')
 <div class="content">
+    <div class="clearfix"></div>
+
+    @include('flash::message')
+
+    <div class="clearfix"></div>
     <div class="row">
         <div class="col-sm-3">
             <div class="small-box bg-aqua">
