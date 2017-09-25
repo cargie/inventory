@@ -27,6 +27,13 @@ class MetricsService
 		return $this->orderRepository->sum('paid_amount');
 	}
 
+	public function today_revenue()
+	{
+		return $this->orderRepository->findWhere([
+			['created_at', '>', Carbon::today()],
+		])->sum('paid_amount');
+	}
+
 	public function avg_revenue()
 	{
 		return number_format($this->orderRepository->avg('paid_amount'), 2);
