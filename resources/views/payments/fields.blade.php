@@ -6,7 +6,7 @@
 		    <select name="order" id="order" class="form-control" required data-placeholder="-- Select --" style="width: 100%">
 		    	<option></option>
 		    	@foreach($orders as $order)
-					<option value="{{ $order->id }}">{{ $order->uid }}</option>
+					<option value="{{ $order->id }}">{{ $order->uid }} - [ P {{ number_format($order->due_amount, 2) }} ]</option>
 		    	@endforeach
 		    </select>
 		</div>
