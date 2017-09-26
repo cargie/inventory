@@ -4,6 +4,7 @@ namespace App\Classes;
 
 use App\Models\Setting;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 
 
 class ViewSettingsBag
@@ -17,7 +18,9 @@ class ViewSettingsBag
 
 	public function settings()
 	{
-		$this->settings = Setting::all();
+		$this->settings = Cache::rememberForever('view-settings-variable', function () {
+			return Setting::all();
+		});
 	}
 
 	public function transform()
