@@ -35,6 +35,14 @@
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('users.index') !!}" class="btn btn-default">Cancel</a>
+    @if(isset($user) && $user->id != 1)
+		<button class="btn btn-danger pull-right"
+			formaction="{{ route('users.destroy', $user->uid) }}"
+			name="_method" value="DELETE" 
+			>
+			<i class="fa fa-trash"></i>
+		</button>
+    @endif
 </div>
 @section('css')
 <style>
