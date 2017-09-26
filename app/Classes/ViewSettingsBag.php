@@ -25,14 +25,14 @@ class ViewSettingsBag
 
 	public function transform()
 	{
-		return $this->settings->transform(function ($setting) {
+		return $this->settings->map(function ($setting) {
 			return [$setting->key => $setting->value];
 		})->collapse();
 	}
 
 	public function toArray()
 	{
-		return $this->transform()->toArray();
+		return $this->transform()->all();
 	}
 
 	public function toJson($options = 0)
