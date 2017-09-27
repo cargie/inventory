@@ -35,4 +35,12 @@
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('suppliers.index') !!}" class="btn btn-default">Cancel</a>
+    @if(isset($supplier))
+        <button class="btn btn-danger pull-right"
+            formaction="{{ route('suppliers.destroy', $supplier->uid) }}"
+            name="_method"
+            value="DELETE">
+            <i class="fa fa-trash"></i>
+        </button>
+    @endif
 </div>

@@ -20,4 +20,12 @@
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('tags.index') !!}" class="btn btn-default">Cancel</a>
+    @if(isset($tag))
+		<button class="btn btn-danger pull-right"
+			formaction="{{ route('tags.destroy', $tag->id) }}"
+			name="_method"
+			value="DELETE">
+			<i class="fa fa-trash"></i>
+		</button>
+    @endif
 </div>

@@ -36,6 +36,14 @@
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('roles.index') !!}" class="btn btn-default">Cancel</a>
+    @if(isset($role))
+		<button class="btn btn-danger pull-right"
+			formaction="{{ route('roles.destroy', $role->id) }}"
+			name="_method"
+			value="DELETE">
+			<i class="fa fa-trash"></i>
+		</button>
+    @endif
 </div>
 
 @section('scripts')

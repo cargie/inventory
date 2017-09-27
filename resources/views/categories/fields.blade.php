@@ -34,6 +34,14 @@
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('categories.index') !!}" class="btn btn-default">Cancel</a>
+    @if(isset($category))
+        <button class="btn btn-danger pull-right"
+            formaction="{{ route('categories.destroy', $category->uid) }}"
+            name="_method"
+            value="DELETE">
+            <i class="fa fa-trash"></i>
+        </button>
+    @endif
 </div>
 @section('css')
 <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.0.0/dist/vue-multiselect.min.css">
