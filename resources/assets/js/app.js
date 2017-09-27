@@ -21,9 +21,5 @@ Vue.component('example', require('./components/Example.vue'));
 //     el: '#app'
 // });
 import Multiselect from 'vue-multiselect'
-import vSelect from 'vue-select'
-import Vue2Filters from 'vue2-filters'
 
-Vue.component('v-select', vSelect)
 Vue.component('multiselect', Multiselect)
-Vue.use(Vue2Filters)
