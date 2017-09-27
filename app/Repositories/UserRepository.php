@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Password;
 
 /**
  * Class UserRepository
@@ -37,7 +38,9 @@ class UserRepository extends BaseRepository
         $attributes['password'] = str_random(8);
 
         $model = parent::create($attributes);
-
+        $this->broker()->sendResetLink(
+            ['email' => $model->email]
+        );
         return $model;
     }
 
@@ -47,5 +50,15 @@ class UserRepository extends BaseRepository
         $model = parent::updateBy($attributes, 'uid' , $id);
 
         return $model;
+    }
+
+    /**
+     * Get the broker to be used during password reset.
+     *
+     * @return \Illuminate\Contracts\Auth\PasswordBroker
+     */
+    public function broker()
+    {
+        return Password::broker();
     }
 }
