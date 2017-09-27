@@ -49,3 +49,7 @@ Route::resource('stock-adjustments', 'StockAdjustmentAPIController');
 Route::resource('users', 'UserAPIController');
 
 Route::resource('roles', 'RoleAPIController');
+
+Route::resource('settings', 'SettingAPIController', [
+	'only' => ['store']
+]);

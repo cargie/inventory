@@ -14,7 +14,7 @@ class Setting extends Model
 
     protected $casts = [
     	'key' => 'string',
-    	'value' => 'array'
+        'value' => 'array'
     ];
 
     public static function boot()
