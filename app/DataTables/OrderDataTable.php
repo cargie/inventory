@@ -54,6 +54,7 @@ class OrderDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->parameters([
+                        'stateSave' => true,
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
                         'buttons' => [

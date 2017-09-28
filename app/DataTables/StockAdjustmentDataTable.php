@@ -51,6 +51,7 @@ class StockAdjustmentDataTable extends DataTable
             // ->addAction(['width' => '10%'])
             ->ajax('')
             ->parameters([
+                'stateSave' => true,
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [

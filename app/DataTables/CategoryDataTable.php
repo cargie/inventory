@@ -54,6 +54,7 @@ class CategoryDataTable extends DataTable
                     ->minifiedAjax()
                     // ->addAction(['width' => '80px'])
                     ->parameters([
+                        'stateSave' => true,
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
                         'buttons' => [

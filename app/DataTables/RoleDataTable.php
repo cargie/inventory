@@ -48,6 +48,7 @@ class RoleDataTable extends DataTable
             ->columns($this->getColumns())
             ->ajax('')
             ->parameters([
+                'stateSave' => true,
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
