@@ -36,7 +36,7 @@ class User extends Authenticatable
     public static $rules = [
         'name' => 'required|string',
         'email' => 'required|email|unique:users,email',
-        'password' => 'min:8|nullable',
+        'password' => 'min:8|required|min:8|confirmed',
     ];
 
     public function sluggable()

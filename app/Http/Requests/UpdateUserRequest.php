@@ -28,6 +28,7 @@ class UpdateUserRequest extends FormRequest
     {
         $rules = User::$rules;
         $rules['email'] = Rule::unique('users')->ignore($this->user, 'uid');
+        $rules['password'] = 'nullable|confirmed|min:8';
         $rules['roles'] = 'array|required';
         $rules['roles.*'] = 'exists:roles,id';
 

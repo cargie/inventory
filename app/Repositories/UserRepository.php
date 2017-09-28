@@ -35,17 +35,17 @@ class UserRepository extends BaseRepository
 
     public function create(array $attributes)
     {
-        $attributes['password'] = str_random(8);
 
         $model = parent::create($attributes);
-        $this->broker()->sendResetLink(
-            ['email' => $model->email]
-        );
+
         return $model;
     }
 
     public function update(array $attributes, $id)
     {
+        if ($attributes['password'] == null) {
+            unset($attributes['password']);
+        }
 
         $model = parent::updateBy($attributes, 'uid' , $id);
 
