@@ -26,5 +26,6 @@ return [
         'Today Order'   => App\Widgets\Order\TodayOrder::class,
         'Order List with Due'    => App\Widgets\Order\OrderList::class,
         'Product Reorderable Count' => App\Widgets\Product\ReorderableCount::class,
+        'Product Reorderable List' => App\Widgets\Product\ReorderableList::class,
     ]
 ];
