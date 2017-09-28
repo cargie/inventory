@@ -26,6 +26,9 @@
 					<td>{{ $order->ordered_at->format("M d, Y H:i") }}</td>
 				</tr>
 			@empty
+				<tr>
+					<td colspan="4" align="center">No Order</td>
+				</tr>
 			@endforelse
 		</tbody>
 	</table>
