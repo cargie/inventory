@@ -24,6 +24,7 @@ return [
         'Today Revenue' => App\Widgets\Revenue\Today::class,
         'Total Revenue' => App\Widgets\Revenue\Total::class,
         'Today Order'   => App\Widgets\Order\TodayOrder::class,
+        'Order List with Due'    => App\Widgets\Order\OrderList::class,
         'Product Reorderable Count' => App\Widgets\Product\ReorderableCount::class,
     ]
 ];

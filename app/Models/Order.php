@@ -24,7 +24,7 @@ class Order extends Model
     public $table = 'orders';
     
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'ordered_at'];
 
     protected $cascadeDeletes = ['payments'];
 
@@ -95,5 +95,10 @@ class Order extends Model
     public function getDueAmountAttribute()
     {
         return (float)number_format($this->total_amount - $this->paid_amount, 2 , '.' , '');
+    }
+
+    public function setOrderedAtAttribute($value)
+    {
+        $this->attributes['ordered_at'] = Carbon::parse($value);
     }
 }
