@@ -14,62 +14,6 @@
 
     <div class="clearfix"></div>
     <div class="row" id="widget-list">
-        {{-- <div class="col-sm-3">
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>{{ $metrics->total_revenue() }}</h3>
-                    <p>Total Revenue</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-money"></i>
-                </div>
-                <a href="{{ route('orders.index') }}" class="small-box-footer">
-                    <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>{{ $metrics->today_revenue() }}</h3>
-                    <p>Today Revenue</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-money"></i>
-                </div>
-                <a href="{{ route('orders.index') }}" class="small-box-footer">
-                    <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="small-box bg-green">
-                <div class="inner">
-                    <h3>{{ $metrics->orders_today() }}</h3>
-                    <p>Today's Order</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-shopping-cart"></i>
-                </div>
-                <a href="{{ route('orders.index') }}" class="small-box-footer">
-                    <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="small-box bg-purple">
-                <div class="inner">
-                    <h3>{{ $metrics->reorderable_products() }}</h3>
-                    <p>Reorderable Products</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-product-hunt"></i>
-                </div>
-                <a href="{{ route('products.index') }}" class="small-box-footer">
-                    <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div> --}}
         @foreach($settings->dashboard_widgets ?? [] as $key => $widget)
             @if((count($widget['config']['roles']) && auth()->user()->hasRole($widget['config']['roles'])) ||
                 !count($widget['config']['roles']))
@@ -77,10 +21,10 @@
                     @if(auth()->user()->id == 1)
                         <div class="btn-group pull-right invisible widget-control" style="z-index: 2">
                             <button class="btn btn-sm btn-link">
-                                <i class="fa fa-bars fa-lg" style="color:white"></i>
+                                <i class="fa fa-bars fa-lg" style="color:#b0b9bd"></i>
                             </button>
                             <button class="btn btn-sm btn-link js-remove">
-                                <i class="fa fa-times fa-lg" style="color:white"></i>
+                                <i class="fa fa-times fa-lg" style="color:#b0b9bd"></i>
                             </button>
                         </div>
                     @endif
