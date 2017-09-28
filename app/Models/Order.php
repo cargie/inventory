@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Eloquent as Model;
 use Iatstuti\Database\Support\CascadeSoftDeletes;
