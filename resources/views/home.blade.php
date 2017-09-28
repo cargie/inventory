@@ -193,8 +193,6 @@
                     setTimeout(function () {
                         window.location = '/dashboard'
                     }, 300)
-                }).then(r => {
-
                 }).catch(e => {
                     alert(e.data.message)
                 })
