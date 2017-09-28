@@ -24,7 +24,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo text-center">
+            <a href="/" class="logo text-center">
                 <span class="logo-mini">
                     <img src="/images/logo-sm.png" alt="Yorbs Electronics" class="img-responsive">
                 </span>
