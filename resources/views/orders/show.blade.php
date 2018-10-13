@@ -136,7 +136,7 @@
     </div>
     <div class="section visible-print-block invoice">
         <h2 class="page-header">
-            Yorbs Electronics
+            {{ config("app.name") }}
             
             <small class="pull-right">
                 {{ $order->created_at->format("M d, Y H:i A") }}
@@ -146,7 +146,7 @@
             <div class="col-xs-4">
                 From
                 <address>
-                    <strong>Yorbs Electronics</strong><br>
+                    <strong>{{ config("app.name") }}</strong><br>
                     2nd Fl. Gillamac's Bldg., CPG Ave. <br>
                     Tagbilaran City, Bohol <br>
                     Phone: +63917-505-9268 <br>

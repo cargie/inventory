@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Yorbs Electronics</title>
+    <title>{{ config("app.name") }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.0.0/dist/vue-multiselect.min.css">
@@ -26,10 +26,10 @@
             <!-- Logo -->
             <a href="/" class="logo text-center">
                 <span class="logo-mini">
-                    <img src="/images/logo-sm.png" alt="Yorbs Electronics" class="img-responsive">
+                    <img src="/images/logo-sm.png" alt="{{ config("app.name") }}" class="img-responsive">
                 </span>
                 <span class="logo-lg text-center">
-                    <img class="img-responsive" src="http://www.yorbs.net/image/catalog/full-logo-small.jpg" alt="Yorbs Electronics" style="margin: 0 auto;height: 50px">
+                    <img class="img-responsive" src="http://www.yorbs.net/image/catalog/full-logo-small.jpg" alt="{{ config("app.name") }}" style="margin: 0 auto;height: 50px">
                 </span>
             </a>
 
@@ -93,7 +93,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer hidden-print" style="max-height: 100px;text-align: center">
-            <strong>Copyright © {{ date('Y') }} <a href="http://www.yorbs.net/">Yorbs Electronics</a>.</strong> All rights reserved.
+            <strong>Copyright © {{ date('Y') }} <a href="http://www.yorbs.net/">{{ config("app.name") }}</a>.</strong> All rights reserved.
         </footer>
 
     </div>
@@ -113,7 +113,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{!! url('/') !!}">
-                    Yorbs Electronics
+                    {{ config("app.name") }}
                 </a>
             </div>
 
