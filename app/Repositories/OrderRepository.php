@@ -55,6 +55,8 @@ class OrderRepository extends BaseRepository
                 ]);
             }
 
+            $payment->save();
+
             $order = $model;
             $order->paid_amount = $attributes['paid_amount'];
             $order->save();
